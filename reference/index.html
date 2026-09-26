@@ -1,0 +1,755 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Jamal Ferguson, frontend developer and creative problem solver."
+    />
+    <title>Jamal Ferguson | Interactive Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Patrick+Hand&family=Playfair+Display:ital,wght@0,600;1,600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+    <div class="loader" aria-label="Loading portfolio">
+      <div class="loader__mascot mascot-frame">
+        <img src="assets/lil-mal-v2-open.png" alt="" />
+      </div>
+      <p class="loader__count">00</p>
+      <p class="loader__note">Clearing some desk space</p>
+      <span class="loader__track"><span></span></span>
+    </div>
+
+    <header class="topbar">
+      <a class="signature" href="#home"><span>JF</span> Jamal Ferguson</a>
+      <p class="topbar__status"><span></span> Open to frontend opportunities</p>
+      <nav aria-label="Primary navigation">
+        <a href="#work">Work</a><a href="#process">Process</a
+        ><a href="#about">About</a><a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <button
+      class="mascot-card draggable"
+      type="button"
+      data-draggable
+      aria-label="Drag Lil' Jam, Jamal's mascot"
+    >
+      <span class="mascot-bubble" aria-live="polite"
+        >Yep, I react! drag me around, or you can throw me too!</span
+      >
+      <span class="mascot-frame">
+        <img
+          class="mascot-face mascot-face--default"
+          src="assets/lil-mal-v2-open.png"
+          alt="Lil' Jam, Jamal Ferguson's portfolio mascot"
+          draggable="false"
+        />
+        <img
+          class="mascot-face mascot-face--blink"
+          src="assets/lil-mal-v2-blink.png"
+          alt=""
+          draggable="false"
+        />
+        <img
+          class="mascot-face mascot-face--wink"
+          src="assets/lil-mal-v2-wink.png"
+          alt=""
+          draggable="false"
+        />
+        <img
+          class="mascot-face mascot-face--drag"
+          src="assets/lil-mal-v2-drag.png"
+          alt=""
+          draggable="false"
+        />
+        <img
+          class="mascot-face mascot-face--flying"
+          src="assets/lil-mal-v2-flying.png"
+          alt=""
+          draggable="false"
+        />
+        <img
+          class="mascot-face mascot-face--idle"
+          src="assets/lil-mal-v2-idle.png"
+          alt=""
+          draggable="false"
+        />
+      </span>
+    </button>
+    <button
+      class="recall-mascot"
+      type="button"
+      aria-label="Bring Lil Jam back into view"
+    >
+      ↩ Call Lil’ Jam back
+    </button>
+    <img
+      class="lil-mal-coffee"
+      src="assets/lil-mal-real-coffee-v2.png"
+      alt=""
+      aria-hidden="true"
+    />
+    <img
+      class="lil-mal-spill"
+      src="assets/lil-mal-coffee-spill.png"
+      alt=""
+      aria-hidden="true"
+    />
+    <canvas class="lil-mal-spill-canvas" aria-hidden="true"></canvas>
+
+    <main>
+      <section class="canvas" id="home" aria-labelledby="hero-title">
+        <div class="canvas__grid" aria-hidden="true"></div>
+        <p class="canvas__coordinate canvas__coordinate--x">
+          01 &nbsp; 02 &nbsp; 03 &nbsp; 04 &nbsp; 05
+        </p>
+        <p class="canvas__coordinate canvas__coordinate--y">
+          A<br />B<br />C<br />D<br />E
+        </p>
+        <div class="hero-copy">
+          <p class="eyebrow">Frontend developer in Northern California</p>
+          <h1 id="hero-title">Jamal Ferguson</h1>
+          <p class="role">
+            I build <span class="type-line" aria-live="polite"></span>
+          </p>
+          <a class="view-work" href="#work">View my work</a>
+          <p class="drag-instruction">Grab anything. This desk is yours too.</p>
+        </div>
+
+        <button
+          class="paper-note paper-note--idea draggable"
+          type="button"
+          data-draggable
+        >
+          <span>Current thought</span>What if every click felt a little more
+          human?
+        </button>
+        <button
+          class="paper-note paper-note--available draggable"
+          type="button"
+          data-draggable
+        >
+          <span>Currently</span>Learning, building, and looking for the next
+          challenge.
+        </button>
+        <button class="code-card draggable" type="button" data-draggable>
+          <span class="code-card__lights" aria-hidden="true"
+            ><i></i><i></i><i></i
+          ></span>
+          <code
+            ><b>const</b> developer = {<br />&nbsp; curious:
+            <em>true</em>,<br />&nbsp; givingUp: <em>false</em><br />};</code
+          >
+        </button>
+        <button
+          class="tiny-sticker tiny-sticker--react draggable"
+          type="button"
+          data-draggable
+          aria-label="Drag React sticker"
+        >
+          ⚛
+        </button>
+        <button
+          class="tiny-sticker tiny-sticker--coffee draggable"
+          type="button"
+          data-draggable
+          aria-label="Drag Lil' Jam's steaming coffee"
+        >
+          <img
+            class="real-coffee-cup"
+            src="assets/lil-mal-real-coffee-v2.png"
+            alt="A ceramic mug filled with coffee"
+            draggable="false"
+          />
+          <span class="live-coffee-steam" aria-hidden="true"
+            ><i></i><i></i><i></i><i></i
+          ></span>
+        </button>
+        <button
+          class="photo-card photo-card--rainier draggable"
+          type="button"
+          data-draggable
+          aria-label="Drag Jamal at Mount Rainier photo"
+        >
+          <img
+            src="assets/jamal-mount-rainier.jpeg"
+            alt="Jamal walking through snow at Mount Rainier in Washington State"
+          />
+        </button>
+        <button
+          class="photo-card photo-card--beba draggable"
+          type="button"
+          data-draggable
+          aria-label="Drag Beba photo"
+        >
+          <img
+            src="assets/beba.jpeg"
+            alt="Beba, Jamal's white dog, sitting on a couch"
+          />
+        </button>
+        <button
+          class="photo-card photo-card--london draggable"
+          type="button"
+          data-draggable
+          aria-label="Drag Jamal in London photo"
+        >
+          <img
+            src="assets/london-coffee.jpeg"
+            alt="Jamal drinking coffee in London"
+          />
+        </button>
+        <button class="shuffle-desk" type="button">
+          <span>↻</span> Mix up my desk
+        </button>
+        <div class="tape tape--one" aria-hidden="true"></div>
+        <div class="tape tape--two" aria-hidden="true"></div>
+        <span class="sketch-arrow" aria-hidden="true">↝</span
+        ><span class="sketch-star" aria-hidden="true">✦</span
+        ><span class="sketch-circle" aria-hidden="true"></span>
+      </section>
+
+      <section class="work" id="work">
+        <header class="section-intro">
+          <p>Selected work · drag to explore</p>
+          <h2>Things I brought to life.</h2>
+        </header>
+        <div class="freeform-board">
+          <article
+            class="project-card project-card--pizza draggable"
+            data-draggable
+          >
+            <span class="project-card__tape" aria-hidden="true"></span>
+            <p class="project-card__count">01 / 06</p>
+            <h3>Antonio's Pizza</h3>
+            <p>
+              Custom pizza builder, animated cutting board, cart, and routed
+              ordering flow.
+            </p>
+            <div class="project-card__tags">
+              <span>React</span><span>Motion</span><span>UX</span>
+            </div>
+            <a
+              href="https://antonios-pizza.vercel.app"
+              target="_blank"
+              rel="noreferrer"
+              >Open project ↗</a
+            >
+          </article>
+          <article
+            class="project-card project-card--disney draggable"
+            data-draggable
+          >
+            <span class="project-card__tape" aria-hidden="true"></span>
+            <p class="project-card__count">02 / 06</p>
+            <h3>Disney Plus Clone</h3>
+            <p>
+              A cinematic streaming interface with brand pages, routes, and
+              animated storytelling.
+            </p>
+            <div class="project-card__tags">
+              <span>React</span><span>API</span><span>Routes</span>
+            </div>
+            <a
+              href="https://disney-plus-clone-react-sepia.vercel.app/"
+              target="_blank"
+              rel="noreferrer"
+              >Open project ↗</a
+            >
+          </article>
+          <article
+            class="project-card project-card--shrimp draggable"
+            data-draggable
+          >
+            <span class="project-card__tape" aria-hidden="true"></span>
+            <p class="project-card__count">03 / 06</p>
+            <h3>RUFF Pepper Shrimp</h3>
+            <p>
+              A family business experience rooted in Jamaica, memory, flavor,
+              and story.
+            </p>
+            <div class="project-card__tags">
+              <span>Brand</span><span>Story</span><span>Responsive</span>
+            </div>
+            <a
+              href="https://ruff-pepper-shrimp.vercel.app"
+              target="_blank"
+              rel="noreferrer"
+              >Open project ↗</a
+            >
+          </article>
+          <article
+            class="project-card project-card--google draggable"
+            data-draggable
+          >
+            <span class="project-card__tape" aria-hidden="true"></span>
+            <p class="project-card__count">04 / 06</p>
+            <h3>Google Search Clone</h3>
+            <p>
+              A clean responsive search experience powered by live data and
+              familiar interactions.
+            </p>
+            <div class="project-card__tags">
+              <span>JavaScript</span><span>API</span><span>Search</span>
+            </div>
+            <a
+              href="https://google-search-clone-react.vercel.app"
+              target="_blank"
+              rel="noreferrer"
+              >Open project ↗</a
+            >
+          </article>
+          <article
+            class="project-card project-card--netflix draggable"
+            data-draggable
+          >
+            <span class="project-card__tape" aria-hidden="true"></span>
+            <p class="project-card__count">05 / 06</p>
+            <h3>Netflix Streaming Clone</h3>
+            <p>
+              A responsive streaming experience with live TMDB data, trailers,
+              title pages, episode views, and a saved-list flow.
+            </p>
+            <div class="project-card__tags">
+              <span>React</span><span>TMDB API</span><span>Vite</span>
+            </div>
+            <a
+              href="https://netflix-clone-react-five-zeta.vercel.app/"
+              target="_blank"
+              rel="noreferrer"
+              >Open project ↗</a
+            >
+          </article>
+          <article
+            class="project-card project-card--social draggable"
+            data-draggable
+          >
+            <span class="project-card__tape" aria-hidden="true"></span>
+            <p class="project-card__count">06 / 06</p>
+            <h3>X-Style Social Feed</h3>
+            <p>
+              A responsive social platform with feeds, profiles, messages,
+              notifications, bookmarks, search, and post composition.
+            </p>
+            <div class="project-card__tags">
+              <span>React</span><span>Router</span><span>Responsive</span>
+            </div>
+            <a
+              href="https://twitter-clone-react-ml9mvfeb1-miingo955.vercel.app/"
+              target="_blank"
+              rel="noreferrer"
+              >Open project ↗</a
+            >
+          </article>
+          <div class="board-note draggable" data-draggable>
+            <p>Built with curiosity,<br />debugged with snacks.</p>
+            <span>JF</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="build-lab" id="process" aria-labelledby="process-title">
+        <header class="build-lab__intro">
+          <p>A tiny debugging safari</p>
+          <h2 id="process-title">Explore the build<br />with Safari Jam.</h2>
+          <span
+            >Three doodle bugs wandered into the project. Help Lil’ Jam gently
+            catch and relocate them.</span
+          >
+        </header>
+        <div class="build-machine">
+          <div class="build-machine__topbar">
+            <span><i></i><i></i><i></i></span>
+            <p>portfolio-preview</p>
+            <b class="build-status">Ready</b>
+          </div>
+          <div class="bug-hunt__welcome">
+            <span aria-hidden="true">⌁</span>
+            <h3>Crikey—tiny bugs in the build!</h3>
+            <p>
+              Find all three doodle bugs. Click one and Safari Jam will scoop it
+              up safely.
+            </p>
+          </div>
+          <div class="arcade-marquee" hidden aria-live="polite">
+            <span>Safari Jam presents</span>
+            <strong>DOODLE BUG SAFARI</strong>
+            <div class="arcade-scoreboard">
+              <small>BUGS <b class="debug-count">3</b></small>
+              <small>TIME <b class="safari-time">0.00</b></small>
+              <small>BEST <b class="safari-best">--</b></small>
+            </div>
+            <em class="safari-record" hidden>NEW HIGH SCORE!</em>
+          </div>
+          <div
+            class="super-debug"
+            hidden
+            aria-label="Safari Jam doodle bug-catching game"
+          >
+            <div class="safari-scenery" aria-hidden="true">
+              <i></i><i></i><i></i><i></i><i></i>
+            </div>
+            <img
+              class="safari-jam safari-jam--ready"
+              src="assets/lil-jam-safari.png"
+              alt="Lil’ Jam wearing a safari hat and holding a bug-catching net"
+            />
+            <img
+              class="safari-jam safari-jam--catch"
+              src="assets/lil-jam-safari-catch-empty.png"
+              alt=""
+              aria-hidden="true"
+            />
+            <div class="safari-net-bugs" aria-hidden="true"></div>
+            <div class="super-debug__bugs">
+              <button
+                type="button"
+                data-debug-bug
+                aria-label="Catch the first doodle bug"
+              >
+                <span>bug!</span>
+              </button>
+              <button
+                type="button"
+                data-debug-bug
+                aria-label="Catch the second doodle bug"
+              >
+                <span>oops</span>
+              </button>
+              <button
+                type="button"
+                data-debug-bug
+                aria-label="Catch the third doodle bug"
+              >
+                <span>eep!</span>
+              </button>
+            </div>
+            <div class="super-debug__hud" aria-live="polite">
+              <span class="debug-instruction"
+                >Click a doodle bug. Safari Jam will gently catch it with his
+                net.</span
+              >
+            </div>
+          </div>
+          <div class="arcade-controls" aria-label="Safari arcade controls">
+            <div class="arcade-joystick" aria-hidden="true"><i></i></div>
+            <p>Aim at a bug<br /><small>then swipe the net</small></p>
+            <button class="safari-catch-button" type="button" disabled>
+              <span>SWIPE!</span><small>catch</small>
+            </button>
+          </div>
+          <button class="run-build" type="button">
+            <span>▶</span> Start the Safari
+          </button>
+          <div class="build-receipt" hidden>
+            <p>BUGS SAFELY CAUGHT!</p>
+            <strong>How Jamal debugs</strong>
+            <ul>
+              <li>1 · Reproduce the issue</li>
+              <li>2 · Isolate the cause</li>
+              <li>3 · Implement the fix</li>
+              <li>4 · Verify it works everywhere</li>
+            </ul>
+            <small>Three bugs relocated · build healthy · ready to ship</small>
+          </div>
+          <span class="build-doodle build-doodle--one" aria-hidden="true"
+            >✦</span
+          >
+          <span class="build-doodle build-doodle--two" aria-hidden="true"
+            >↝</span
+          >
+        </div>
+      </section>
+
+      <section class="about" id="about">
+        <div class="about__heading">
+          <p>About this human</p>
+          <h2>Curious by nature.<br />Frontend by choice.</h2>
+        </div>
+        <div class="about__copy">
+          <p>
+            I am a 36 year old frontend developer trained through Frontend
+            Simplified. I turn strong visual ideas into responsive, interactive
+            experiences that feel natural to use.
+          </p>
+          <p>
+            My program includes frontend internships with Ultaverse NFT World
+            and Skinstric AI, where I work with live APIs, dynamic routes,
+            loading states, and real product flows.
+          </p>
+          <ul aria-label="Technology toolkit">
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+            <li>React</li>
+            <li>Next.js</li>
+            <li>Firebase</li>
+          </ul>
+        </div>
+        <article class="credential-card" aria-labelledby="credential-title">
+          <a
+            class="credential-card__preview"
+            href="assets/jamal-ferguson-fes-certificate.pdf"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Open Jamal Ferguson's FES Institute graduation certificate PDF"
+          >
+            <img
+              src="assets/jamal-ferguson-fes-certificate-preview.png"
+              alt="FES Institute Certificate of Graduation awarded to Jamal Ferguson"
+              loading="lazy"
+            />
+            <span>View full certificate ↗</span>
+          </a>
+          <div class="credential-card__copy">
+            <p>Education · verified</p>
+            <h3 id="credential-title">Frontend Development Bootcamp</h3>
+            <strong>FES Institute · Certificate of Graduation</strong>
+            <p>
+              Completed professional frontend training and a practical
+              internship, demonstrating proficiency across HTML, CSS,
+              JavaScript, React, Next.js, Node.js, TypeScript, and Redux.
+            </p>
+            <div>
+              <a
+                href="assets/jamal-ferguson-fes-certificate.pdf"
+                target="_blank"
+                rel="noreferrer"
+                >Open certificate <span>↗</span></a
+              >
+              <a
+                href="https://firebasestorage.googleapis.com/v0/b/do-not-delete-jg.firebasestorage.app/o/chat_images%2F7861%2F547007fe-d662-4a20-9897-5651cb1342ce-Jamal%20Ferguson%20Certificate%20of%20Graduation.pdf?alt=media&token=e3183668-474c-4cde-9052-896bc7f054dd"
+                target="_blank"
+                rel="noreferrer"
+                >Verified source <span>↗</span></a
+              >
+            </div>
+          </div>
+        </article>
+        <div class="life-gallery">
+          <div class="life-gallery__intro">
+            <p>Life outside code</p>
+            <h3>A few frames from my world.</h3>
+            <span>Drag · click · double-click ↗</span>
+          </div>
+          <div class="memory-desk__controls">
+            <p>Lil’ Jam was supposed to organize these…</p>
+            <button
+              class="organize-memories"
+              type="button"
+              aria-expanded="false"
+              aria-controls="memory-gallery"
+            >
+              Arrange the photos
+            </button>
+          </div>
+          <div
+            class="life-gallery__board memory-desk"
+            id="memory-gallery"
+            aria-label="Interactive personal photo collage"
+          >
+            <button
+              class="life-photo life-photo--epcot draggable"
+              type="button"
+              data-draggable
+              aria-label="Drag EPCOT monorail photo"
+            >
+              <img
+                src="assets/epcot-monorail.jpeg"
+                alt="Monorail passing Spaceship Earth at EPCOT"
+              />
+            </button>
+            <button
+              class="life-photo life-photo--dinner draggable"
+              type="button"
+              data-draggable
+              aria-label="Drag dinner with friends photo"
+            >
+              <img
+                src="assets/friends-dinner.jpeg"
+                alt="Jamal smiling with friends at dinner"
+              />
+            </button>
+            <button
+              class="life-photo life-photo--dog draggable"
+              type="button"
+              data-draggable
+              aria-label="Drag dog portrait"
+            >
+              <img
+                src="assets/dog-portrait.jpeg"
+                alt="Small dog relaxing on a couch"
+              />
+            </button>
+            <button
+              class="life-photo life-photo--london-portrait draggable"
+              type="button"
+              data-draggable
+              aria-label="Drag London portrait"
+            >
+              <img
+                src="assets/jamal-st-pauls.jpeg"
+                alt="Jamal standing near St Paul's Cathedral in London"
+              />
+            </button>
+            <button
+              class="life-photo life-photo--sunset draggable"
+              type="button"
+              data-draggable
+              aria-label="Drag beach sunset photo"
+            >
+              <img
+                src="assets/beach-sunset-new.jpeg"
+                alt="Couple watching the sunset on a rocky beach"
+              />
+            </button>
+            <button
+              class="life-photo life-photo--cultural draggable"
+              type="button"
+              data-draggable
+              aria-label="Drag cultural celebration photo"
+            >
+              <img
+                src="assets/friends-cultural-celebration.jpeg"
+                alt="Jamal with friends at a colorful cultural celebration"
+              />
+            </button>
+            <button
+              class="life-photo life-photo--car-selfie draggable"
+              type="button"
+              data-draggable
+              aria-label="Drag car selfie"
+            >
+              <img
+                src="assets/friend-car-selfie.jpeg"
+                alt="A smiling friend taking a selfie with Jamal in the car"
+              />
+            </button>
+            <button
+              class="life-photo life-photo--greenwich draggable"
+              type="button"
+              data-draggable
+              aria-label="Drag Greenwich photo"
+            >
+              <img
+                src="assets/greenwich-friends.jpeg"
+                alt="Jamal and a friend standing between the historic Greenwich buildings"
+              />
+            </button>
+            <button
+              class="life-photo life-photo--skatepark draggable"
+              type="button"
+              data-draggable
+              aria-label="Drag skatepark photo"
+            >
+              <img
+                src="assets/skatepark.jpeg"
+                alt="Jamal skating at an outdoor skatepark"
+              />
+            </button>
+            <button
+              class="life-photo life-photo--disney draggable"
+              type="button"
+              data-draggable
+              aria-label="Drag Disney photo"
+            >
+              <img
+                src="assets/disney-castle.jpeg"
+                alt="Jamal facing Cinderella Castle at Disney World"
+              />
+            </button>
+            <button
+              class="life-photo life-photo--animal-kingdom draggable"
+              type="button"
+              data-draggable
+              aria-label="Drag Animal Kingdom photo"
+            >
+              <img
+                src="assets/animal-kingdom-friends.jpeg"
+                alt="Jamal smiling with a friend at Animal Kingdom"
+              />
+            </button>
+            <button
+              class="life-photo life-photo--blue-gala draggable"
+              type="button"
+              data-draggable
+              aria-label="Drag gala photo"
+            >
+              <img
+                src="assets/blue-gala.jpeg"
+                alt="Jamal and his partner dressed up at a blue-lit gala"
+              />
+            </button>
+            <button
+              class="life-photo life-photo--wedding-lawn draggable"
+              type="button"
+              data-draggable
+              aria-label="Drag wedding lawn photo"
+            >
+              <img
+                src="assets/wedding-lawn.jpeg"
+                alt="Jamal and a friend dressed for a wedding on a green lawn"
+              />
+            </button>
+            <button
+              class="life-photo life-photo--couple-selfie draggable"
+              type="button"
+              data-draggable
+              aria-label="Drag couple selfie"
+            >
+              <img
+                src="assets/couple-selfie.jpeg"
+                alt="Jamal posing for a close selfie with his partner"
+              />
+            </button>
+            <button
+              class="life-photo life-photo--forest-pause draggable"
+              type="button"
+              data-draggable
+              aria-label="Drag forest hike photo"
+            >
+              <img
+                src="assets/forest-pause.jpeg"
+                alt="Jamal pausing on a sunlit trail in a lush forest"
+              />
+            </button>
+          </div>
+          <dialog class="memory-viewer" aria-label="Photo viewer">
+            <button
+              class="memory-viewer__close"
+              type="button"
+              aria-label="Close photo"
+            >
+              ×
+            </button>
+            <img src="" alt="" />
+            <p></p>
+          </dialog>
+        </div>
+        <div class="about__stamp" aria-hidden="true">Always<br />building</div>
+      </section>
+
+      <section class="contact" id="contact">
+        <div class="contact__mascot mascot-frame">
+          <img src="assets/lil-mal-v2-open.png" alt="" />
+        </div>
+        <p>Have an idea?</p>
+        <h2>Let us make something people remember.</h2>
+        <a href="mailto:jamal.ferguson1990@email.com"
+          >Send me a message <span>↗</span></a
+        >
+        <footer>
+          <span>Jamal Ferguson</span><span>Designed and built with care</span
+          ><span>© 2026</span>
+        </footer>
+      </section>
+    </main>
+  </body>
+</html>
