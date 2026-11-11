@@ -1,3 +1,4 @@
+(() => {
 const phrases = ["interfaces that move.", "stories people feel.", "ideas that work."];
 const typeLine = document.querySelector(".type-line");
 const loader = document.querySelector(".loader");
@@ -7,16 +8,36 @@ const mascot = document.querySelector(".mascot-card");
 const mascotBubble = document.querySelector(".mascot-bubble");
 const recallMascotButton = document.querySelector(".recall-mascot");
 const contactMascotDock = document.querySelector(".contact__mascot-dock");
+
+// Resolve all interaction classes into one visual face. Several interactions
+// can overlap briefly, so letting CSS independently show each matching sprite
+// creates a one-frame double face. Mutation observers run before paint, which
+// keeps the state synchronous without scattering face logic through features.
+function syncMascotFace() {
+  let face = "default";
+  if (mascot.classList.contains("is-docking") || mascot.classList.contains("is-flying")) face = "flying";
+  else if (mascot.classList.contains("is-cleaning") || mascot.classList.contains("is-dragging")) face = "drag";
+  else if (mascot.classList.contains("is-reacting") || mascot.matches(":hover")) face = "wink";
+  else if (mascot.classList.contains("is-blinking")) face = "blink";
+  else if (mascot.classList.contains("is-idle")) face = "idle";
+  mascot.dataset.face = face;
+}
+
 const mascotStops = [
   {
     section: document.querySelector("#home"),
     position: "home",
-    message: "I’m Lil’ Jam, your tiny tour guide! Don’t scroll too fast—my coffee might spill. I’m kind of a klutz. ☕",
+    message: "I’m Lil’ Jam, your tiny tour guide! Don’t scroll too fast. My coffee might spill. I’m kind of a klutz. ☕",
   },
   {
     section: document.querySelector("#work"),
     position: "work",
-    message: "This is the workbench—six projects built with React, APIs, and a lot of curiosity.",
+    message: "This is the workbench. Six projects built with React, APIs, and a lot of curiosity.",
+  },
+  {
+    section: document.querySelector("#experience"),
+    position: "experience",
+    message: "Here are the reps behind the work: internships, real product flows, and plenty of lessons earned by building.",
   },
   {
     section: document.querySelector("#process"),
@@ -200,7 +221,7 @@ function launchMascot(startVelocityX, startVelocityY) {
   mascot.classList.remove("is-idle", "is-blinking", "is-reacting");
   mascot.classList.add("is-flying", "is-introducing");
   mascot.dataset.suppressPrankClick = "true";
-  mascotBubble.textContent = "Yep, I react—you can throw me too!";
+  mascotBubble.textContent = "Yep, I react. You can throw me too!";
 
   function fly(now) {
     const frameScale = Math.min((now - lastTime) / 16.67, 2);
@@ -240,7 +261,7 @@ function launchMascot(startVelocityX, startVelocityY) {
       mascotFlightFrame = 0;
       mascot.classList.remove("is-flying");
       mascot.style.rotate = `${(Math.random() - 0.5) * 10}deg`;
-      mascotBubble.textContent = "Yep, I react. Drag me around—or throw me again!";
+      mascotBubble.textContent = "Yep, I react. Drag me around or throw me again!";
       // A throw may cross into Contact while its momentum is still running.
       // Finish the physics first, then hand Jam to the final dock animation.
       if (activeMascotStop === "contact") {
@@ -304,7 +325,7 @@ function enableDragging(element) {
     dragging = false;
     if (element === mascot) {
       mascotBubble.textContent = moved
-        ? "Yep, I react. Drag me around—or you can throw me too!"
+        ? "Yep, I react. Drag me around, or you can throw me too!"
         : "Try dragging me too.";
       if (moved) {
         mascotUserPositioned = true;
@@ -540,7 +561,7 @@ function enableDeskSecrets() {
   const reactions = {
     "Rubber duck": "You found my debugging partner. He listens better than I do.",
     Sketchbook: "The polished version always starts with a wonderfully messy sketch.",
-    Passport: "Good interfaces—and good stories—usually start by going somewhere new.",
+    Passport: "Good interfaces and good stories usually start by going somewhere new.",
     "Secret terminal": "Secret command accepted: curiosity level permanently set to maximum.",
     "Golden GitHub square": "The rare golden contribution square! Absolutely no merge conflicts included.",
   };
@@ -616,7 +637,7 @@ function recallMascot() {
   mascot.style.rotate = "0deg";
   mascot.classList.remove("is-dragging", "is-idle", "is-flying", "is-cleaning");
   mascot.classList.add("is-introducing", "is-reacting");
-  mascotBubble.textContent = "I’m back! Drag me around—or you can throw me too.";
+  mascotBubble.textContent = "I’m back! Drag me around, or you can throw me too.";
   const target = mascot.getBoundingClientRect();
   const returnAnimation = mascot.animate(
     [
@@ -1374,7 +1395,7 @@ function runLilMalPrank() {
     returnMascotToActiveTourStop();
     mascot.classList.add("is-introducing");
     mascotBubble.textContent = activeMascotStop === "contact"
-      ? "All cleaned up! Back in my spot—now, about that idea?"
+      ? "All cleaned up! Back in my spot. Now, about that idea?"
       : "All cleaned up! Back to the tour.";
   }, 11500);
 
@@ -1471,7 +1492,10 @@ function introduceSection(stop) {
   activeMascotStop = stop.position;
   // Tour stops may move an untouched Jam. Once the user has placed or thrown
   // him, only the dialogue changes; his visual anchor stays exactly put.
-  if (!mascotUserPositioned) mascot.dataset.stop = stop.position;
+  // The footer has its own measured dock. Keep Jam at his current tour spot
+  // until the docking animation takes over so Safari never paints an
+  // intermediate side-face position.
+  if (!mascotUserPositioned && stop.position !== "contact") mascot.dataset.stop = stop.position;
   mascotBubble.textContent = stop.message;
   mascot.classList.add("is-introducing");
   window.clearTimeout(mascotIntroductionTimer);
@@ -1496,13 +1520,21 @@ function updateMascotDock() {
     document.body.classList.remove("has-user-placed-mascot");
   }
   const wasDocked = mascot.classList.contains("is-docked");
+  const enteringDock = shouldDock && !wasDocked;
   const start = mascot.getBoundingClientRect();
+  // Select the flying face before any footer coordinates change. This keeps
+  // the existing throw-style landing without a one-frame side-face flash.
+  if (enteringDock) {
+    mascot.classList.remove("is-idle", "is-blinking", "is-reacting", "is-dragging", "is-flying", "is-cleaning");
+    mascot.classList.add("is-docking");
+  }
   mascot.classList.toggle("is-docked", shouldDock);
   // Update the one-piece bubble in the same frame as the dock state so its
   // pointer never flashes in the previous direction during the handoff.
   drawMascotBubbleShape();
 
   if (!shouldDock) {
+    mascot.classList.remove("is-docking");
     mascot.style.removeProperty("top");
     mascot.style.removeProperty("left");
     mascot.style.removeProperty("width");
@@ -1525,11 +1557,10 @@ function updateMascotDock() {
   mascot.style.top = `${dock.top}px`;
   mascot.style.left = `${dock.left}px`;
   mascot.style.width = `${dock.width}px`;
-  if (!wasDocked) {
+  if (enteringDock) {
     const target = mascot.getBoundingClientRect();
     const deltaX = start.left - target.left;
     const deltaY = start.top - target.top;
-    mascot.classList.add("is-docking");
     const dockingAnimation = mascot.animate(
       [
         { translate: `${deltaX}px ${deltaY}px`, rotate: "-7deg" },
@@ -1594,7 +1625,7 @@ mascot.addEventListener("mouseenter", () => {
   mascot.classList.remove("is-blinking");
   mascotBubble.textContent = mascot.classList.contains("is-docked")
     ? "Made it! I saved my spot for the big finish."
-    : "Yep, I react. Drag me around—or you can throw me too!";
+    : "Yep, I react. Drag me around, or you can throw me too!";
 });
 mascot.addEventListener("mouseleave", () => {
   restoreMascotGuide(500);
@@ -1676,22 +1707,47 @@ document.querySelector(".shuffle-desk").addEventListener("click", () => {
 });
 
 let siteStarted = false;
+const initialSection = new URLSearchParams(window.location.search).get("section");
+
+function restoreInitialSection() {
+  if (initialSection !== "work") return;
+  const target = document.querySelector("#work");
+  if (!target) return;
+  target.scrollIntoView({ block: "start", behavior: "instant" });
+  window.requestAnimationFrame(updateMascotGuide);
+  const navigationWindow = window.parent !== window ? window.parent : window;
+  const parentUrl = new URL(navigationWindow.location.href);
+  parentUrl.searchParams.delete("section");
+  navigationWindow.history.replaceState(navigationWindow.history.state, "", `${parentUrl.pathname}${parentUrl.search}${parentUrl.hash}`);
+}
 
 function startSite() {
   if (siteStarted) return;
   siteStarted = true;
+  new MutationObserver(syncMascotFace).observe(mascot, { attributes: true, attributeFilter: ["class"] });
+  mascot.addEventListener("pointerenter", syncMascotFace);
+  mascot.addEventListener("pointerleave", syncMascotFace);
+  syncMascotFace();
   if (window.location.hash) history.replaceState(null, "", `${window.location.pathname}${window.location.search}`);
-  window.scrollTo(0, 0);
+  if (initialSection !== "work") window.scrollTo(0, 0);
   runLoader();
+  if (initialSection === "work") window.setTimeout(restoreInitialSection, 1700);
   scheduleMascotBlink();
   scheduleMascotIdle();
   updateMascotGuide();
 }
 
-window.addEventListener("pageshow", () => window.scrollTo(0, 0));
+window.addEventListener("pageshow", () => {
+  if (initialSection === "work") {
+    window.setTimeout(restoreInitialSection, 50);
+    return;
+  }
+  window.scrollTo(0, 0);
+});
 
 if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", startSite, { once: true });
 } else {
   startSite();
 }
+})();

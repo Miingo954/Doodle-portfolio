@@ -6,7 +6,7 @@
 .hero-copy{position:absolute;top:48%;left:50%;z-index:3;width:min(760px,90vw);text-align:center;transform:translate(-50%,-50%);pointer-events:none}.eyebrow{margin-bottom:10px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.2em}h1,h2,h3{letter-spacing:-.055em}h1{font:600 clamp(62px,10vw,154px)/.86 "Playfair Display",serif}.role{margin-top:20px;font:28px "Patrick Hand",cursive}.type-line{color:var(--yellow)}.type-line::after{content:"";display:inline-block;width:2px;height:.8em;margin-left:5px;background:currentColor;animation:blink 700ms steps(1) infinite}.view-work{display:inline-flex;margin-top:30px;border:2px solid currentColor;border-radius:99px;padding:13px 28px;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;pointer-events:auto;transition:220ms}.view-work:hover{background:var(--paper);color:var(--ink);transform:rotate(-2deg) scale(1.05)}.drag-instruction{margin-top:16px;font:18px "Patrick Hand",cursive;opacity:.75}
 .draggable{touch-action:none;user-select:none;cursor:grab}.draggable.is-dragging{z-index:20!important;cursor:grabbing;filter:drop-shadow(18px 22px 12px rgba(0,0,0,.24))}.mascot-card{position:absolute;top:14%;left:9%;z-index:5;width:155px;border:0;background:transparent;transform:rotate(-7deg)}.mascot-frame{position:relative;display:block;aspect-ratio:1}.mascot-frame img{display:block;width:100%;height:100%;object-fit:cover;mix-blend-mode:multiply}.mascot-card .mascot-frame{transition:transform 300ms cubic-bezier(.2,.8,.2,1)}.mascot-card:hover .mascot-frame,.mascot-card.is-reacting .mascot-frame{transform:translateY(-12px) rotate(5deg) scale(1.08);animation:wiggle 550ms ease infinite alternate}.mascot-card.is-dragging .mascot-frame{transform:scale(.9) rotate(-8deg)}.mascot-bubble{position:absolute;bottom:86%;left:75%;width:164px;border:2px solid var(--ink);border-radius:50%;padding:16px 13px;background:var(--paper);color:var(--ink);font:17px/1.05 "Patrick Hand",cursive;opacity:0;transform:translateY(10px) rotate(3deg) scale(.8);transition:200ms;pointer-events:none}.mascot-bubble::after{content:"";position:absolute;bottom:-10px;left:25px;width:16px;height:16px;border-right:2px solid;border-bottom:2px solid;background:var(--paper);transform:rotate(45deg)}.mascot-card:hover .mascot-bubble,.mascot-card.is-dragging .mascot-bubble,.mascot-card.is-reacting .mascot-bubble{opacity:1;transform:translateY(0) rotate(3deg) scale(1)}
 .paper-note{position:absolute;z-index:4;width:210px;border:0;padding:23px;box-shadow:var(--shadow);color:var(--ink);text-align:left;transform:rotate(var(--tilt));transition:box-shadow 200ms}.paper-note:hover{box-shadow:17px 20px 0 rgba(18,18,18,.22)}.paper-note span{display:block;margin-bottom:9px;font:18px "Patrick Hand",cursive;text-decoration:underline}.paper-note--idea{--tilt:5deg;top:19%;right:7%;background:var(--yellow)}.paper-note--available{--tilt:-6deg;right:19%;bottom:8%;background:var(--blue)}.tape{position:absolute;z-index:7;width:85px;height:24px;background:rgba(238,225,196,.72);box-shadow:inset 0 0 0 1px rgba(100,80,45,.12)}.tape--one{top:18%;right:11%;transform:rotate(-5deg)}.tape--two{right:24%;bottom:17%;transform:rotate(4deg)}.sketch-arrow,.sketch-star,.sketch-circle{position:absolute;font-family:"Patrick Hand",cursive}.sketch-arrow{right:37%;bottom:11%;font-size:84px;transform:rotate(35deg)}.sketch-star{left:6%;bottom:12%;color:var(--yellow);font-size:56px;animation:twinkle 2s ease infinite}.sketch-circle{top:18%;left:40%;width:90px;height:52px;border:3px solid var(--coral);border-radius:50%;transform:rotate(-12deg)}
-.work{padding:120px clamp(20px,7vw,110px);background:var(--paper)}.section-intro{display:grid;grid-template-columns:220px 1fr;gap:30px;align-items:end;margin-bottom:70px}.section-intro p,.about__heading>p{font:20px "Patrick Hand",cursive;color:var(--teal)}h2{font:600 clamp(50px,7vw,105px)/.92 "Playfair Display",serif}.freeform-board{position:relative;min-height:940px;border:2px solid var(--ink);overflow:hidden;background-color:#ded9cc;background-image:linear-gradient(rgba(18,18,18,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(18,18,18,.08) 1px,transparent 1px);background-size:32px 32px;box-shadow:inset 0 0 70px rgba(80,60,30,.12)}.project-card{position:absolute;z-index:2;width:min(390px,40%);min-height:325px;border:2px solid var(--ink);padding:30px;background:var(--paper);box-shadow:10px 12px 0 var(--ink);transform:rotate(var(--tilt));transition:scale 200ms}.project-card:hover{scale:1.035}.project-card__tape{position:absolute;top:-14px;left:50%;width:100px;height:28px;background:rgba(247,229,187,.82);transform:translateX(-50%) rotate(2deg)}.project-card__count{font:17px "Patrick Hand",cursive}.project-card h3{margin:42px 0 15px;font:600 clamp(34px,4vw,60px)/.9 "Playfair Display",serif}.project-card>p:not(.project-card__count){max-width:330px;line-height:1.55}.project-card__tags{display:flex;flex-wrap:wrap;gap:6px;margin:20px 0}.project-card__tags span{border:1px solid;border-radius:99px;padding:5px 9px;font-size:11px}.project-card a{position:relative;z-index:5;display:inline-block;border-bottom:2px solid;font-weight:700}.project-card--pizza{--tilt:-4deg;top:90px;left:8%;background:#ffc17c}.project-card--disney{--tilt:3deg;top:45px;right:7%;background:var(--blue)}.project-card--shrimp{--tilt:2deg;bottom:70px;left:13%;background:var(--coral)}.project-card--google{--tilt:-3deg;right:12%;bottom:45px;background:#fff}.board-note{position:absolute;top:44%;left:43%;z-index:6;width:190px;padding:23px;background:var(--yellow);box-shadow:8px 9px 0 rgba(18,18,18,.26);font:21px/1.1 "Patrick Hand",cursive;transform:rotate(7deg)}.board-note span{display:block;margin-top:10px;text-align:right}
+.work{padding:120px clamp(20px,7vw,110px);background:var(--paper)}.section-intro{display:grid;grid-template-columns:220px 1fr;gap:30px;align-items:end;margin-bottom:70px}.section-intro p,.about__heading>p{font:20px "Patrick Hand",cursive;color:var(--teal)}h2{font:600 clamp(50px,7vw,105px)/.92 "Playfair Display",serif}.freeform-board{position:relative;min-height:940px;border:2px solid var(--ink);overflow:hidden;background-color:#ded9cc;background-image:linear-gradient(rgba(18,18,18,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(18,18,18,.08) 1px,transparent 1px);background-size:32px 32px;box-shadow:inset 0 0 70px rgba(80,60,30,.12)}.project-card{position:absolute;z-index:2;width:min(390px,40%);min-height:325px;border:2px solid var(--ink);padding:30px;background:var(--paper);box-shadow:10px 12px 0 var(--ink);transform:rotate(var(--tilt));transition:scale 200ms}.project-card:hover{scale:1.035}.project-card__tape{position:absolute;top:-14px;left:50%;width:100px;height:28px;background:rgba(247,229,187,.82);transform:translateX(-50%) rotate(2deg)}.project-card__count{font:17px "Patrick Hand",cursive}.project-card h3{margin:42px 0 15px;font:600 clamp(34px,4vw,60px)/.9 serif}.project-card>p:not(.project-card__count){max-width:330px;line-height:1.55}.project-card__tags{display:flex;flex-wrap:wrap;gap:6px;margin:20px 0}.project-card__tags span{border:1px solid;border-radius:99px;padding:5px 9px;font-size:11px}.project-card a{position:relative;z-index:5;display:inline-block;border-bottom:2px solid;font-weight:700}.project-card--pizza{--tilt:-4deg;top:90px;left:8%;background:#ffc17c}.project-card--disney{--tilt:3deg;top:45px;right:7%;background:var(--blue)}.project-card--shrimp{--tilt:2deg;bottom:70px;left:13%;background:var(--coral)}.project-card--google{--tilt:-3deg;right:12%;bottom:45px;background:#fff}.board-note{position:absolute;top:44%;left:43%;z-index:6;width:190px;padding:23px;background:var(--yellow);box-shadow:8px 9px 0 rgba(18,18,18,.26);font:21px/1.1 "Patrick Hand",cursive;transform:rotate(7deg)}.board-note span{display:block;margin-top:10px;text-align:right}
 .about{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(50px,8vw,140px);overflow:hidden;padding:140px clamp(24px,8vw,130px);background:var(--ink);color:var(--paper)}.about__copy{align-self:end}.about__copy p{margin-bottom:24px;font-size:18px;line-height:1.75}.about__copy ul{display:flex;flex-wrap:wrap;gap:8px;list-style:none}.about__copy li{border:1px solid #5d5d5d;border-radius:99px;padding:8px 14px;font-size:12px}.about__stamp{position:absolute;right:-35px;bottom:-35px;display:grid;width:170px;aspect-ratio:1;place-items:center;border:3px solid var(--yellow);border-radius:50%;color:var(--yellow);font:25px/1 "Patrick Hand",cursive;text-align:center;transform:rotate(-14deg)}
 .contact{position:relative;display:flex;min-height:92svh;flex-direction:column;justify-content:center;align-items:center;overflow:hidden;padding:100px 24px 28px;background:var(--yellow);text-align:center}.contact__mascot-dock{width:120px;height:120px;margin-bottom:20px}.contact>p{font:24px "Patrick Hand",cursive}.contact h2{max-width:1000px;margin:12px auto 36px}.contact>a{display:inline-flex;align-items:center;gap:22px;border-bottom:2px solid;padding:10px 0;font-weight:700}.contact>a span{display:grid;width:42px;aspect-ratio:1;place-items:center;border-radius:50%;background:var(--ink);color:#fff;transition:transform 250ms}.contact>a:hover span{transform:rotate(-45deg)}.contact footer{position:absolute;right:28px;bottom:22px;left:28px;display:flex;justify-content:space-between;font:17px "Patrick Hand",cursive}
 .mascot-frame img{object-fit:contain;mix-blend-mode:normal}.tape--two{display:none}
@@ -410,6 +410,20 @@
 @media(max-width:560px){.desk-secret--duck{left:-128px;scale:.82}.desk-secret--sketchbook{right:-142px;scale:.82}.desk-secret--passport{left:-132px;scale:.78}.desk-secret--terminal{right:-198px;scale:.82}.desk-secret--github{top:-96px;left:68%;scale:.82}.secret-counter{top:76px}.secret-toast{bottom:74px;max-width:calc(100vw - 30px);white-space:nowrap;font-size:15px}}
 @media(prefers-reduced-motion:reduce){.desk-secret,.secret-counter,.secret-toast{transition:none}.desk-secret.is-found,.desk-secrets-complete .secret-counter,.desk-secrets-complete .canvas::after{animation:none}.desk-secret.is-found{opacity:0}}
 
+/* Debug Patrol uses Jam visually, but pauses his portfolio dialogue. */
+body.galaga-open .mascot-card .mascot-bubble{display:none!important}
+
+/* Face states are replacements, never overlays. The base face used to remain
+   visible beneath the idle profile and caused a compositor flash at docking. */
+.mascot-card.is-blinking .mascot-face--default,
+.mascot-card:hover .mascot-face--default,
+.mascot-card.is-reacting .mascot-face--default,
+.mascot-card.is-dragging .mascot-face--default,
+.mascot-card.is-flying .mascot-face--default,
+.mascot-card.is-idle .mascot-face--default,
+.mascot-card.is-cleaning .mascot-face--default,
+.mascot-card.is-docking .mascot-face--default{opacity:0!important}
+
 /* I-Spy cutouts: believable objects hidden beyond the draggable desktop. */
 .desk-secret{overflow:visible;border:0;padding:0;background:transparent;filter:drop-shadow(8px 12px 5px rgba(18,18,18,.3))}
 .desk-secret img{display:block;width:100%;height:100%;object-fit:contain;pointer-events:none;user-select:none}
@@ -435,3 +449,119 @@
   .game-secret--cartridge{right:auto;bottom:-170px;left:48%;width:150px;height:137px}
   .recenter-canvas{right:12px;bottom:72px}
 }
+
+/* Final face-layer priority. Docking is an instant sprite swap, not a
+   crossfade, and idle fully replaces the base face at every tour stop. */
+.mascot-card.mascot-card.is-idle .mascot-frame .mascot-face--default{opacity:0!important}
+.mascot-card.mascot-card.is-docking .mascot-frame .mascot-face{opacity:0!important;transition:none!important}
+.mascot-card.mascot-card.is-docking .mascot-frame .mascot-face--flying{opacity:1!important}
+
+/* Blink and idle artwork need their full transparent canvas so the top of
+   Jam's hair remains visible. Scale the complete cutout instead of clipping. */
+.mascot-card .mascot-frame .mascot-face--blink,
+.mascot-card .mascot-frame .mascot-face--wink,
+.mascot-card .mascot-frame .mascot-face--idle{
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  clip-path:none!important;
+  object-fit:contain!important
+}
+.mascot-card .mascot-frame .mascot-face--drag,
+.mascot-card .mascot-frame .mascot-face--flying{
+  clip-path:none!important
+}
+
+/* The side-face beat is a quiet pause. Landing dialogue still wins through
+   is-introducing, then the normal message returns when idle ends. */
+.mascot-card.is-idle:not(.is-introducing) .mascot-bubble{
+  opacity:0!important;
+  visibility:hidden!important
+}
+
+/* Portfolio content and accessibility pass. */
+.skip-link{position:fixed;z-index:2000;top:12px;left:12px;padding:12px 16px;border:3px solid var(--ink);border-radius:999px;background:var(--yellow);color:var(--ink);font-weight:800;transform:translateY(-160%);transition:transform 160ms}
+.skip-link:focus{transform:translateY(0)}
+:where(a,button,[tabindex]):focus-visible{outline:4px solid var(--yellow);outline-offset:4px}
+.project-card--featured::after{content:"CASE STUDY";position:absolute;top:16px;right:18px;border:2px solid currentColor;border-radius:999px;padding:5px 8px;font:700 9px/1 "DM Sans",sans-serif;letter-spacing:.12em;transform:rotate(2deg)}
+.project-card--secondary{scale:.94;filter:saturate(.78)}
+.project-card--secondary .project-card__count{opacity:.65}
+.experience{position:relative;overflow:hidden;padding:clamp(92px,12vw,165px) clamp(24px,7vw,110px);background:#f4efe6;color:var(--ink)}
+.experience::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(18,18,18,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(18,18,18,.07) 1px,transparent 1px);background-size:54px 54px;pointer-events:none}
+.experience>header,.experience__grid{position:relative;z-index:1}
+.experience>header{max-width:900px;margin-bottom:54px}
+.experience>header p{margin:0 0 12px;color:#158b83;font:700 13px/1 "DM Sans",sans-serif;letter-spacing:.16em;text-transform:uppercase}
+.experience>header h2{max-width:850px;margin:0;font:clamp(52px,8vw,112px)/.88 "Playfair Display",serif;letter-spacing:-.055em}
+.experience__grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:20px;max-width:1400px;margin:0 auto}
+.experience__grid article{min-height:310px;border:3px solid var(--ink);border-radius:26px;padding:28px;background:#fffdf7;box-shadow:9px 11px 0 rgba(18,18,18,.15);transform:rotate(-1deg)}
+.experience__grid article:nth-child(2){background:#a7d8ff;transform:rotate(1.4deg)}
+.experience__grid article:nth-child(3){background:#f6dc69;transform:rotate(-.6deg)}
+.experience__grid article>span{display:inline-block;border:2px solid currentColor;border-radius:999px;padding:6px 9px;font:700 10px/1 "DM Sans",sans-serif;letter-spacing:.12em;text-transform:uppercase}
+.experience__grid h3{margin:30px 0 8px;font:clamp(32px,3vw,50px)/.95 "Patrick Hand",cursive}
+.experience__grid strong{font:700 14px/1.4 "DM Sans",sans-serif}
+.experience__grid p{margin:19px 0 0;font:16px/1.65 "DM Sans",sans-serif}
+.contact__links{display:flex;justify-content:center;gap:clamp(22px,5vw,70px);flex-wrap:wrap}
+.contact__links>a{display:inline-flex;align-items:center;gap:16px;border-bottom:3px solid currentColor;padding:8px 0;color:inherit;font-weight:800;text-decoration:none}
+.contact__links>a span{display:grid;width:46px;aspect-ratio:1;place-items:center;border-radius:50%;background:var(--ink);color:var(--yellow);font-size:22px;transition:transform 180ms}
+.contact__links>a:hover span{transform:translate(3px,-3px)}
+@media(max-width:900px){.topbar nav a[href="#experience"]{display:none}.experience__grid{grid-template-columns:1fr}.experience__grid article{min-height:auto}.project-card--secondary{scale:.97}}
+@media(max-width:560px){.experience{padding:84px 18px}.experience>header{margin-bottom:34px}.experience__grid{gap:17px}.experience__grid article{padding:23px}.project-card--featured::after{top:12px;right:12px;font-size:8px}.contact__links{gap:18px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.project-card--secondary{scale:1}.experience__grid article{transform:none}.contact__links>a span{transition:none}}
+
+/* Experience is a full Lil Jam tour stop between Work and Process. */
+.mascot-card[data-stop="experience"]{top:34vh}
+@media(max-width:850px){.mascot-card[data-stop="experience"]{top:30vh}}
+@media(max-width:560px){.mascot-card[data-stop="experience"]{top:25vh}}
+
+/* One compositor-safe contract for every Lil Jam face. Earlier feature rules
+   may choose the active state, but they no longer alter sprite geometry. */
+.mascot-card .mascot-frame{overflow:visible;transform-style:preserve-3d;backface-visibility:hidden}
+.mascot-card .mascot-frame .mascot-face{
+  position:absolute!important;
+  inset:0!important;
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:contain!important;
+  clip-path:none!important;
+  backface-visibility:hidden;
+  transform:translate3d(0,0,0);
+  transform-origin:50% 50%;
+  transition:opacity 130ms ease-out!important;
+  will-change:opacity;
+}
+.mascot-card .mascot-frame .mascot-face--blink,
+.mascot-card .mascot-frame .mascot-face--wink,
+.mascot-card .mascot-frame .mascot-face--drag,
+.mascot-card .mascot-frame .mascot-face--flying,
+.mascot-card .mascot-frame .mascot-face--idle{opacity:0!important}
+.mascot-card .mascot-frame .mascot-face--default{opacity:1!important}
+.mascot-card.is-blinking:not(:hover):not(.is-dragging):not(.is-flying):not(.is-idle) .mascot-frame .mascot-face--default,
+.mascot-card:hover:not(.is-dragging):not(.is-flying) .mascot-frame .mascot-face--default,
+.mascot-card.is-reacting:not(.is-dragging):not(.is-flying) .mascot-frame .mascot-face--default,
+.mascot-card.is-dragging .mascot-frame .mascot-face--default,
+.mascot-card.is-flying .mascot-frame .mascot-face--default,
+.mascot-card.is-idle:not(:hover) .mascot-frame .mascot-face--default,
+.mascot-card.is-cleaning .mascot-frame .mascot-face--default,
+.mascot-card.is-docking .mascot-frame .mascot-face--default{opacity:0!important}
+.mascot-card.is-blinking:not(:hover):not(.is-dragging):not(.is-flying):not(.is-idle) .mascot-frame .mascot-face--blink{opacity:1!important}
+.mascot-card:hover:not(.is-dragging):not(.is-flying) .mascot-frame .mascot-face--wink,
+.mascot-card.is-reacting:not(.is-dragging):not(.is-flying) .mascot-frame .mascot-face--wink{opacity:1!important}
+.mascot-card.is-dragging .mascot-frame .mascot-face--drag,
+.mascot-card.is-cleaning .mascot-frame .mascot-face--drag{opacity:1!important}
+.mascot-card.is-flying .mascot-frame .mascot-face--flying,
+.mascot-card.is-docking .mascot-frame .mascot-face--flying{opacity:1!important}
+.mascot-card.is-idle:not(:hover) .mascot-frame .mascot-face--idle{opacity:1!important}
+.mascot-card.is-dragging .mascot-frame .mascot-face,
+.mascot-card.is-docking .mascot-frame .mascot-face{transition:opacity 90ms ease-out!important}
+@media(prefers-reduced-motion:reduce){.mascot-card .mascot-frame .mascot-face{transition:none!important}}
+
+/* A single resolved face is painted per frame. Never crossfade line-art
+   expressions because their eyes and mouth overlap as a visible ghost. */
+.mascot-card[data-face] .mascot-frame .mascot-face{opacity:0!important;transition:none!important}
+.mascot-card[data-face="default"] .mascot-frame .mascot-face--default,
+.mascot-card[data-face="blink"] .mascot-frame .mascot-face--blink,
+.mascot-card[data-face="wink"] .mascot-frame .mascot-face--wink,
+.mascot-card[data-face="drag"] .mascot-frame .mascot-face--drag,
+.mascot-card[data-face="flying"] .mascot-frame .mascot-face--flying,
+.mascot-card[data-face="idle"] .mascot-frame .mascot-face--idle{opacity:1!important}

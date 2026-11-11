@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Providers from "./components/Providers";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,14 +14,28 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Jamal Ferguson | Interactive Doodle Portfolio",
-  description: "Jamal Ferguson, frontend developer and creative problem solver.",
+  title: "Jamal Ferguson | Full-Stack Software Developer",
+  description:
+    "Full-stack software developer building thoughtful, responsive products with React, Next.js, Node.js, APIs, and modern web technologies.",
+  metadataBase: new URL("https://jamalferguson.dev"),
+  icons: {
+    icon: "/icon.png",
+    apple: "/icon.png",
+  },
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
-      <body>{children}</body>
+    <html
+      lang="en"
+      className={`${geistSans.variable} ${geistMono.variable}`}
+      data-scroll-behavior="smooth"
+    >
+      <body>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }
