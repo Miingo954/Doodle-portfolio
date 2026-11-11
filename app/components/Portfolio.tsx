@@ -657,7 +657,7 @@ export default function Portfolio() {
             LinkedIn
           </a>
           <a
-            href="/doodle/assets/jamal-ferguson-resume.pdf"
+            href="/doodle/assets/Jamal_Ferguson_Resume.pdf"
             target="_blank"
             rel="noreferrer"
           >
