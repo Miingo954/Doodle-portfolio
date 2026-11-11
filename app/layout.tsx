@@ -22,6 +22,29 @@ export const metadata: Metadata = {
     icon: "/icon.png",
     apple: "/icon.png",
   },
+  openGraph: {
+    type: "website",
+    url: "https://jamalferguson.dev",
+    title: "Jamal Ferguson | Full-Stack Software Developer",
+    description:
+      "Full-stack software developer building thoughtful, responsive products with React, Next.js, Node.js, APIs, and modern web technologies.",
+    siteName: "Jamal Ferguson",
+    images: [
+      {
+        url: "/opengraph-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Jamal Ferguson — Full-Stack Software Developer",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Jamal Ferguson | Full-Stack Software Developer",
+    description:
+      "Full-stack software developer building thoughtful, responsive products with React, Next.js, Node.js, APIs, and modern web technologies.",
+    images: ["/opengraph-image.png"],
+  },
 };
 
 export default function RootLayout({
