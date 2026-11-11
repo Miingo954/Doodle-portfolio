@@ -407,8 +407,9 @@ export default function Portfolio() {
             </span>
           </p>
           <p className="hero-description mt-7 max-w-2xl text-lg leading-8 text-soft sm:text-xl">
-            I’m <span className="text-[#fc8f82] font-bold">Jamal Ferguson</span>. I turn strong visual ideas into responsive React
-            experiences that feel clear, useful, and human.
+            I’m <span className="text-[#fc8f82] font-bold">Jamal Ferguson</span>
+            . I turn strong visual ideas into responsive React experiences that
+            feel clear, useful, and human.
           </p>
           <p className="doodle-note mt-6" aria-hidden="true">
             made with curiosity + a lot of coffee
@@ -639,7 +640,11 @@ export default function Portfolio() {
           <span>JamalFerguson.dev</span>
         </a>
         <nav className="footer-links" aria-label="Social and résumé links">
-          <a href="https://github.com/Miingo954" target="_blank" rel="noreferrer">
+          <a
+            href="https://github.com/Miingo954"
+            target="_blank"
+            rel="noreferrer"
+          >
             <SiGithub aria-hidden="true" />
             GitHub
           </a>
