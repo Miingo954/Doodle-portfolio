@@ -308,11 +308,11 @@ export default function Portfolio() {
               className="hidden items-center gap-7 text-sm text-soft sm:flex"
               aria-label="Primary navigation"
             >
-              <a className="transition hover:text-mint" href="#work">
+              <a className="transition hover:text-mint transition hover:-translate-y-0.5" href="#work">
                 Work
               </a>
               <a
-                className="transition hover:text-mint"
+                className="transition hover:text-mint transition hover:-translate-y-0.5"
                 href="#about"
                 onClick={(event) => {
                   event.preventDefault();
@@ -321,7 +321,7 @@ export default function Portfolio() {
               >
                 About
               </a>
-              <a className="transition hover:text-mint" href="#contact">
+              <a className="transition hover:text-mint transition hover:-translate-y-0.5" href="#contact">
                 Contact
               </a>
             </nav>
@@ -331,7 +331,7 @@ export default function Portfolio() {
               aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
               className="grid h-10 w-10 place-items-center rounded-full border border-line bg-panel text-lg shadow-sm transition hover:-translate-y-0.5 hover:border-mint"
             >
-              <span aria-hidden="true">{theme === "light" ? "☾" : "☀"}</span>
+              <span aria-hidden="true">{theme === "light" ? "◐" : "◑"}</span>
             </button>
             <button
               type="button"
@@ -408,7 +408,7 @@ export default function Portfolio() {
             </span>
           </p>
           <p className="hero-description mt-7 max-w-2xl text-lg leading-8 text-soft sm:text-xl">
-            I’m <span className="text-[#fc8f82] font-bold">Jamal Ferguson</span>
+            Hi, I’m <span className="text-[#fc8f82] font-bold">Jamal Ferguson</span>
             . I turn strong visual ideas into responsive React experiences that
             feel clear, useful, and human.
           </p>
@@ -708,7 +708,7 @@ export default function Portfolio() {
             Frontend roots. <span>Full stack direction.</span>
           </h2>
           <p className="contact-modal-bio">
-            I’m Jamal Ferguson, a developer building thoughtful interfaces and
+            Hi, I’m Jamal Ferguson, a developer building thoughtful interfaces and
             growing across the full stack. I connect responsive React products
             to APIs, application logic, and data shaped by real user needs.
           </p>
