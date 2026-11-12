@@ -1,5 +1,34 @@
 import Image from "next/image";
+import { useEffect, useRef } from "react";
 import "./mobile-projects.css";
+
+function DisneyLivePreview() {
+  const frameRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const frame = frameRef.current;
+    if (!frame) return;
+    const resize = () => {
+      const scale = Math.min(frame.clientWidth / 1280, frame.clientHeight / 720);
+      frame.style.setProperty("--disney-mobile-scale", String(scale));
+    };
+    resize();
+    const observer = new ResizeObserver(resize);
+    observer.observe(frame);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div ref={frameRef} className="disney-live-preview" aria-label="Live animated preview of the Disney castle landing route">
+      <iframe
+        src="https://disney-plus-clone-react-sepia.vercel.app/#/brand/disney"
+        title="Disney Plus castle route animated preview"
+        loading="lazy"
+        tabIndex={-1}
+      />
+    </div>
+  );
+}
 
 export function MobileProjectPhone({ visual, src }: { visual: string; src: string }) {
   return (
@@ -15,14 +44,7 @@ export function MobileProjectMotion({ visual }: { visual: string }) {
   if (visual === "disney") {
     return (
       <div className="exclusive-motion exclusive-disney" aria-hidden="true">
-        <div className="disney-live-preview" aria-label="Live animated preview of the Disney castle landing route">
-          <iframe
-            src="https://disney-plus-clone-react-sepia.vercel.app/#/brand/disney"
-            title="Disney Plus castle route animated preview"
-            loading="lazy"
-            tabIndex={-1}
-          />
-        </div>
+        <DisneyLivePreview />
       </div>
     );
   }

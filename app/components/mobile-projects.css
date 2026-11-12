@@ -31,6 +31,28 @@
   }
 }
 
+@media (max-width: 768px) {
+  .exclusive-motion.exclusive-disney {
+    bottom: auto;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    background: #020718;
+  }
+  .exclusive-disney .disney-live-preview {
+    background: #020718;
+  }
+  .disney-live-preview iframe {
+    inset: auto;
+    top: 50%;
+    left: 50%;
+    width: 1280px;
+    height: 720px;
+    max-width: none;
+    transform: translate(-50%, -50%) scale(var(--disney-mobile-scale, 0.18));
+    transform-origin: center;
+  }
+}
+
 .doodle-work .project-phone { display: none; }
 .exclusive-phone {
   --phone-bezel: 7px;
