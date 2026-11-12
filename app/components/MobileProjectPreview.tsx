@@ -16,11 +16,11 @@ export function MobileProjectMotion({ visual }: { visual: string }) {
   if (visual === "disney") {
     return (
       <div className="exclusive-motion exclusive-disney" aria-hidden="true">
-        <picture>
-          <source media="(prefers-reduced-motion: reduce)" srcSet="/doodle/assets/disney-portfolio-final.png" />
-          {/* Preserve the original animated WebP rather than flattening its frames. */}
-          <img src="/doodle/assets/disney-castle-route-loop.webp" alt="" loading="lazy" />
-        </picture>
+        <Image src="/doodle/assets/disney-castle-mickey-thumb-v2.jpg" alt="" fill sizes="(max-width: 768px) 75vw, 70vw" />
+        <div className="castle-magic">
+          <span className="castle-comet" />
+          {[1, 2, 3, 4, 5].map((number) => <span key={number} className={`castle-dust castle-dust--${number}`} />)}
+        </div>
       </div>
     );
   }
