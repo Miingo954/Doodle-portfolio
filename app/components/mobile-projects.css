@@ -24,9 +24,10 @@
   transform: scale(1.04);
   filter: blur(5px);
 }
-@media (max-width: 600px) {
-  .disney-live-preview iframe {
-    display: none;
+@media (hover: none) {
+  .project-screen:hover .disney-live-preview {
+    transform: none;
+    filter: none;
   }
 }
 
