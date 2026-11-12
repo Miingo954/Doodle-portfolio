@@ -24,6 +24,7 @@ import GitHubMark from "./GitHubMark";
 import type { AppDispatch, RootState } from "../store";
 import { setActiveFilter, toggleTheme } from "../store";
 import DraggableJam from "./DraggableJam";
+import { MobileProjectMotion, MobileProjectPhone } from "./MobileProjectPreview";
 
 const projects = [
   {
@@ -536,6 +537,7 @@ export default function Portfolio() {
                         />
                       )}
                     </div>
+                    <MobileProjectMotion visual={project.visual} />
                     <div className="project-copy">
                       <p
                         className="project-meta"
@@ -575,6 +577,7 @@ export default function Portfolio() {
                       </div>
                     </div>
                   </div>
+                  <MobileProjectPhone visual={project.visual} src={project.mobilePreview} />
                   <div className="project-phone" aria-hidden="true">
                     <Image
                       src={project.mobilePreview}
