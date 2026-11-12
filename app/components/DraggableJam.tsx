@@ -3,10 +3,9 @@
 import Image from "next/image";
 import { useEffect, useRef, useState, type PointerEvent } from "react";
 
-type Position = { x: number; y: number };
+import { advanceJam, constrainJam, jamBounds, type Point as Position } from "./jam-motion";
 type Face = "open" | "blink" | "wink" | "drag" | "flying" | "idle";
 
-const JAM_SIZE = 148;
 
 const faceImages: Record<Face, string> = {
   open: "/doodle/assets/lil-mal-v2-open.png",
@@ -21,157 +20,150 @@ type DraggableJamProps = {
   onOpenContact: () => void;
 };
 
-function constrain(position: Position): Position {
-  return {
-    x: Math.min(Math.max(position.x, 8), window.innerWidth - JAM_SIZE - 8),
-    y: Math.min(Math.max(position.y, 76), window.innerHeight - JAM_SIZE - 8),
-  };
-}
-
 export default function DraggableJam({ onOpenContact }: DraggableJamProps) {
-  const [position, setPosition] = useState<Position | null>(null);
+  const [free, setFree] = useState(false);
   const [face, setFace] = useState<Face>("open");
   const [dragging, setDragging] = useState(false);
   const [released, setReleased] = useState(false);
+  const mascot = useRef<HTMLButtonElement>(null);
   const pointerOffset = useRef<Position>({ x: 0, y: 0 });
-  const releaseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const positionRef = useRef<Position | null>(null);
+  const position = useRef<Position | null>(null);
   const draggingRef = useRef(false);
   const lastSample = useRef({ x: 0, y: 0, time: 0 });
   const velocity = useRef({ x: 0, y: 0 });
   const animationFrame = useRef<number | null>(null);
+  const faceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const updatePosition = (next: Position | null) => {
-    positionRef.current = next;
-    setPosition(next);
+  const bounds = () => jamBounds(
+    mascot.current?.offsetWidth || 0,
+    mascot.current?.offsetHeight || 0,
+    document.documentElement.clientWidth,
+    window.innerHeight,
+  );
+
+  const paint = (next: Position) => {
+    position.current = next;
+    if (mascot.current) mascot.current.style.translate = `${next.x}px ${next.y}px`;
+  };
+
+  const stop = () => {
+    if (animationFrame.current !== null) cancelAnimationFrame(animationFrame.current);
+    animationFrame.current = null;
+    if (faceTimer.current) clearTimeout(faceTimer.current);
   };
 
   useEffect(() => {
     const handleResize = () => {
-      if (animationFrame.current) {
-        cancelAnimationFrame(animationFrame.current);
-        animationFrame.current = null;
-      }
-      if (releaseTimer.current) {
-        clearTimeout(releaseTimer.current);
-        releaseTimer.current = null;
-      }
-      draggingRef.current = false;
-      positionRef.current = null;
-      setDragging(false);
-      setReleased(false);
-      setFace("open");
-      setPosition(null);
+      if (!mascot.current || !position.current) return;
+      paint(constrainJam(position.current, jamBounds(mascot.current.offsetWidth, mascot.current.offsetHeight, document.documentElement.clientWidth, window.innerHeight)));
     };
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   useEffect(() => {
-    if (dragging) return;
+    if (dragging || released) return;
+    let blinkTimer: ReturnType<typeof setTimeout>;
     const interval = window.setInterval(() => {
       setFace("blink");
-      window.setTimeout(() => setFace("open"), 180);
+      blinkTimer = setTimeout(() => setFace("open"), 180);
     }, 4200);
-    return () => window.clearInterval(interval);
-  }, [dragging]);
+    return () => { clearInterval(interval); clearTimeout(blinkTimer); };
+  }, [dragging, released]);
 
-  useEffect(
-    () => () => {
-      if (releaseTimer.current) clearTimeout(releaseTimer.current);
-      if (animationFrame.current) cancelAnimationFrame(animationFrame.current);
-    },
-    [],
-  );
+  useEffect(() => () => {
+    if (animationFrame.current !== null) cancelAnimationFrame(animationFrame.current);
+    if (faceTimer.current) clearTimeout(faceTimer.current);
+  }, []);
 
   const handlePointerDown = (event: PointerEvent<HTMLButtonElement>) => {
-    if (animationFrame.current) cancelAnimationFrame(animationFrame.current);
-    event.currentTarget.setPointerCapture(event.pointerId);
-    const rect = event.currentTarget.getBoundingClientRect();
-    const startPosition = position ?? { x: rect.left, y: rect.top };
-    updatePosition(startPosition);
-    pointerOffset.current = {
-      x: event.clientX - startPosition.x,
-      y: event.clientY - startPosition.y,
-    };
+    if (!event.isPrimary || event.button !== 0) return;
+    stop();
+    const element = event.currentTarget;
+    element.setPointerCapture(event.pointerId);
+    const rect = element.getBoundingClientRect();
+    const start = position.current ?? { x: rect.left, y: rect.top };
+    pointerOffset.current = { x: event.clientX - start.x, y: event.clientY - start.y };
+    // The fixed outer button only translates. Expression animations belong
+    // to the image, so they cannot distort pointer coordinates or bounds.
+    element.style.left = "0px";
+    element.style.top = "0px";
+    element.style.right = "auto";
+    element.style.bottom = "auto";
+    paint(start);
+    setFree(true);
     setDragging(true);
     draggingRef.current = true;
     setReleased(false);
     setFace("drag");
-    lastSample.current = {
-      x: event.clientX,
-      y: event.clientY,
-      time: performance.now(),
-    };
+    lastSample.current = { x: event.clientX, y: event.clientY, time: performance.now() };
     velocity.current = { x: 0, y: 0 };
   };
 
   const handlePointerMove = (event: PointerEvent<HTMLButtonElement>) => {
-    if (!draggingRef.current) return;
+    if (!draggingRef.current || !event.currentTarget.hasPointerCapture(event.pointerId)) return;
     const now = performance.now();
-    const elapsed = Math.max(now - lastSample.current.time, 8);
-    const throwBoost = 1.35;
+    const elapsed = Math.max(now - lastSample.current.time, 1);
+    const blend = 1 - Math.exp(-elapsed / 30);
     velocity.current = {
-      x: ((event.clientX - lastSample.current.x) / elapsed) * 18 * throwBoost,
-      y: ((event.clientY - lastSample.current.y) / elapsed) * 18 * throwBoost,
+      x: velocity.current.x * (1 - blend) + ((event.clientX - lastSample.current.x) / elapsed) * 1000 * blend,
+      y: velocity.current.y * (1 - blend) + ((event.clientY - lastSample.current.y) / elapsed) * 1000 * blend,
     };
     lastSample.current = { x: event.clientX, y: event.clientY, time: now };
-    updatePosition(
-      constrain({
-        x: event.clientX - pointerOffset.current.x,
-        y: event.clientY - pointerOffset.current.y,
-      }),
-    );
+    position.current = constrainJam({ x: event.clientX - pointerOffset.current.x, y: event.clientY - pointerOffset.current.y }, bounds());
+    if (animationFrame.current === null) animationFrame.current = requestAnimationFrame(() => {
+      animationFrame.current = null;
+      if (position.current) paint(position.current);
+    });
   };
 
   const handlePointerUp = (event: PointerEvent<HTMLButtonElement>) => {
     if (!draggingRef.current) return;
-    event.currentTarget.releasePointerCapture(event.pointerId);
-    setDragging(false);
     draggingRef.current = false;
+    if (event.currentTarget.hasPointerCapture(event.pointerId)) event.currentTarget.releasePointerCapture(event.pointerId);
+    stop();
+    if (position.current) paint(position.current);
+    setDragging(false);
+    const now = performance.now();
+    // A held drag or cancelled touch should settle, not launch an old flick.
+    if (event.type === "pointercancel" || event.type === "lostpointercapture" || now - lastSample.current.time > 100) velocity.current = { x: 0, y: 0 };
+    const speed = Math.hypot(velocity.current.x, velocity.current.y);
+    const limit = Math.min(1, 2200 / (speed || 1));
+    velocity.current = { x: velocity.current.x * limit, y: velocity.current.y * limit };
+    if (speed < 35) { setReleased(false); setFace("open"); return; }
     setReleased(true);
     setFace("flying");
-
-    const coast = () => {
-      const current = positionRef.current;
-      if (!current) return;
-      let nextX = current.x + velocity.current.x;
-      let nextY = current.y + velocity.current.y;
-      const maxX = window.innerWidth - JAM_SIZE - 8;
-      const maxY = window.innerHeight - JAM_SIZE - 8;
-
-      if (nextX <= 8 || nextX >= maxX) {
-        velocity.current.x *= -0.68;
-        nextX = Math.min(Math.max(nextX, 8), maxX);
-      }
-      if (nextY <= 76 || nextY >= maxY) {
-        velocity.current.y *= -0.68;
-        nextY = Math.min(Math.max(nextY, 76), maxY);
-      }
-
-      velocity.current.x *= 0.982;
-      velocity.current.y *= 0.982;
-      updatePosition({ x: nextX, y: nextY });
-
-      if (Math.hypot(velocity.current.x, velocity.current.y) > 0.8) {
+    let lastTime = now;
+    const coast = (time: number) => {
+      if (!position.current) return;
+      const elapsed = Math.min((time - lastTime) / 1000, 0.05);
+      lastTime = time;
+      const next = advanceJam(position.current, velocity.current, bounds(), elapsed);
+      velocity.current = next.velocity;
+      paint(next.position);
+      if (Math.hypot(next.velocity.x, next.velocity.y) > 35) {
         animationFrame.current = requestAnimationFrame(coast);
       } else {
         animationFrame.current = null;
         setReleased(false);
         setFace("idle");
-        releaseTimer.current = setTimeout(() => setFace("open"), 900);
+        faceTimer.current = setTimeout(() => setFace("open"), 900);
       }
     };
-
     animationFrame.current = requestAnimationFrame(coast);
   };
 
   const handleDoubleClick = () => {
-    if (animationFrame.current) cancelAnimationFrame(animationFrame.current);
-    animationFrame.current = null;
-    updatePosition(null);
+    stop();
+    draggingRef.current = false;
+    position.current = null;
+    velocity.current = { x: 0, y: 0 };
+    for (const property of ["left", "top", "right", "bottom", "translate"]) mascot.current?.style.removeProperty(property);
+    setFree(false);
+    setDragging(false);
+    setReleased(false);
     setFace("wink");
-    setTimeout(() => setFace("open"), 650);
+    faceTimer.current = setTimeout(() => setFace("open"), 650);
   };
 
   return (
@@ -179,21 +171,13 @@ export default function DraggableJam({ onOpenContact }: DraggableJamProps) {
       <button
         type="button"
         aria-label="Drag Lil’ Jam to move him. Double-click to return him to the right side."
-        className={`jam-mascot ${position ? "is-free" : ""} ${dragging ? "is-dragging" : ""} ${released ? "is-released" : ""}`}
-        style={
-          position
-            ? {
-                left: position.x,
-                top: position.y,
-                right: "auto",
-                bottom: "auto",
-              }
-            : undefined
-        }
+        ref={mascot}
+        className={`jam-mascot ${free ? "is-free" : ""} ${dragging ? "is-dragging" : ""} ${released ? "is-released" : ""}`}
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
         onPointerUp={handlePointerUp}
         onPointerCancel={handlePointerUp}
+        onLostPointerCapture={handlePointerUp}
         onDoubleClick={handleDoubleClick}
       >
         <Image
