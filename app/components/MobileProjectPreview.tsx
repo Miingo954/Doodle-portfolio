@@ -16,10 +16,13 @@ export function MobileProjectMotion({ visual }: { visual: string }) {
   if (visual === "disney") {
     return (
       <div className="exclusive-motion exclusive-disney" aria-hidden="true">
-        <Image src="/doodle/assets/disney-castle-mickey-thumb-v2.jpg" alt="" fill sizes="(max-width: 768px) 75vw, 70vw" />
-        <div className="castle-magic">
-          <span className="castle-comet" />
-          {[1, 2, 3, 4, 5].map((number) => <span key={number} className={`castle-dust castle-dust--${number}`} />)}
+        <div className="disney-live-preview" aria-label="Live animated preview of the Disney castle landing route">
+          <iframe
+            src="https://disney-plus-clone-react-sepia.vercel.app/#/brand/disney"
+            title="Disney Plus castle route animated preview"
+            loading="lazy"
+            tabIndex={-1}
+          />
         </div>
       </div>
     );
