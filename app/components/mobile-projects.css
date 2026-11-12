@@ -1,8 +1,12 @@
-/* Exclusive portfolio previews are isolated to the mobile breakpoint. */
-.exclusive-phone, .exclusive-motion { display: none; }
-
-@media (max-width: 768px) {
+/* Original Exclusive phone frames and motion, shared at every breakpoint. */
+.doodle-work .project-phone { display: none; }
 .exclusive-phone {
+  display: block;
+  grid-column: 1;
+  grid-row: 1;
+  order: -1;
+  width: 100%;
+  justify-self: center;
   position: relative;
   flex: 0 0 clamp(145px, 17vw, 220px);
   box-sizing: border-box;
@@ -16,6 +20,34 @@
     inset 0 0 0 1px #777;
   animation: exclusive-phone-float-left 5.5s ease-in-out infinite;
   z-index: 3;
+}
+
+.project-showcase-reverse .exclusive-phone {
+  grid-column: 2;
+  order: 0;
+}
+
+.exclusive-motion {
+  display: block;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+  background: #020718;
+  transition: transform 600ms ease, filter 450ms ease;
+}
+
+.exclusive-disney picture { display: block; width: 100%; height: 100%; }
+.exclusive-disney img { width: 100%; height: 100%; object-fit: contain; }
+
+@media (min-width: 769px) and (hover: hover) {
+  .project-screen:hover .exclusive-motion,
+  .project-screen:focus-within .exclusive-motion {
+    transform: scale(1.04);
+    filter: blur(4px) brightness(0.55);
+  }
 }
 
 .project-showcase:nth-child(even) .exclusive-phone {
@@ -464,8 +496,8 @@
   }
 }
 
-  .doodle-work .project-phone { display: none; }
-  .exclusive-phone {
+@media (max-width: 768px) {
+  .doodle-work .exclusive-phone {
     display: block;
     grid-column: 1;
     grid-row: 1;
@@ -545,7 +577,7 @@
   .exclusive-phone::after { top: 8px; left: 63%; width: 2px; height: 2px; }
   .exclusive-phone-screen { border-radius: 13px; }
 }
-@media (max-width: 768px) and (prefers-reduced-motion: reduce) {
+@media (prefers-reduced-motion: reduce) {
   .exclusive-phone, .exclusive-motion *, .exclusive-motion *::after { animation: none !important; }
   .google-home-scene, .google-load-line, .google-scene-label { display: none; }
   .google-preview__image { opacity: 1; transform: none; }

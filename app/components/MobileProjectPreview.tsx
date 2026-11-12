@@ -6,7 +6,7 @@ export function MobileProjectPhone({ visual, src }: { visual: string; src: strin
   return (
     <div className={`exclusive-phone ${safeTop ? "exclusive-phone--safe-top" : ""} ${visual === "google" ? "exclusive-phone--light" : ""}`} aria-hidden="true">
       <div className="exclusive-phone-screen">
-        <Image src={src} alt="" width={390} height={844} sizes="(max-width: 480px) 76px, 145px" />
+        <Image src={src} alt="" width={390} height={844} sizes="(max-width: 480px) 76px, (max-width: 768px) 145px, 190px" />
       </div>
     </div>
   );
@@ -27,7 +27,7 @@ export function MobileProjectMotion({ visual }: { visual: string }) {
   if (visual !== "google") return null;
   return (
     <div className="exclusive-motion google-preview" aria-hidden="true">
-      <Image src="/doodle/assets/google-search-clone-portfolio.png" alt="" fill sizes="(max-width: 768px) 75vw, 1px" className="google-preview__image" />
+      <Image src="/doodle/assets/google-search-clone-portfolio.png" alt="" fill sizes="(max-width: 768px) 75vw, 70vw" className="google-preview__image" />
       <div className="google-home-scene">
         <span className="google-mini-nav">Gmail&nbsp;&nbsp;&nbsp; Images&nbsp;&nbsp;&nbsp; <b>J</b></span>
         <span className="google-wordmark"><i>G</i><i>o</i><i>o</i><i>g</i><i>l</i><i>e</i></span>
