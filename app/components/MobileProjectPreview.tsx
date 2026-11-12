@@ -2,9 +2,8 @@ import Image from "next/image";
 import "./mobile-projects.css";
 
 export function MobileProjectPhone({ visual, src }: { visual: string; src: string }) {
-  const safeTop = ["pizza", "disney", "ruff"].includes(visual);
   return (
-    <div className={`exclusive-phone ${safeTop ? "exclusive-phone--safe-top" : ""} ${visual === "google" ? "exclusive-phone--light" : ""}`} aria-hidden="true">
+    <div className={`exclusive-phone ${visual === "google" ? "exclusive-phone--light" : ""}`} aria-hidden="true">
       <div className="exclusive-phone-screen">
         <Image src={src} alt="" width={390} height={844} sizes="(max-width: 480px) 76px, (max-width: 768px) 145px, 190px" />
       </div>
