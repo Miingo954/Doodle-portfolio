@@ -1507,7 +1507,8 @@ button {
   .hero-copy .type-line {
     order: 4;
     margin-top: 1rem;
-    font-size: 1.25rem;
+    font-family: "Comic Sans MS", "Bradley Hand", cursive;
+    font-size: 1.5rem;
     line-height: 1.4;
   }
 
@@ -1521,7 +1522,8 @@ button {
   .doodle-note {
     order: 6;
     margin-top: 1rem;
-    font-size: 1rem;
+    font-family: "Comic Sans MS", "Bradley Hand", cursive;
+    font-size: 22px;
   }
 
   .hero-actions {
