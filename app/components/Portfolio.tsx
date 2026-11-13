@@ -91,7 +91,7 @@ const projects = [
     preview: "/doodle/assets/social-feed-portfolio.png",
     mobilePreview: "/doodle/assets/mobile-social.jpg",
     accent: "#2087d8",
-    live: "https://twitter-clone-react-ml9mvfeb1-miingo955.vercel.app/",
+    live: "https://twitter-clone-react-b49fk9jcw-miingo955.vercel.app/#/",
     github: "https://github.com/Miingo954/twitter-clone-react",
     caseStudy: null,
   },
