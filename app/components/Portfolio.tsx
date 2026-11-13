@@ -329,9 +329,12 @@ export default function Portfolio() {
               type="button"
               onClick={() => dispatch(toggleTheme())}
               aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
-              className="grid h-10 w-10 place-items-center rounded-full border border-line bg-panel text-lg shadow-sm transition hover:-translate-y-0.5 hover:border-mint"
+              aria-pressed={theme === "dark"}
+              className="theme-toggle"
             >
-              <span aria-hidden="true">{theme === "light" ? "◐" : "◑"}</span>
+              <span className="theme-toggle__track" aria-hidden="true">
+                <span className="theme-toggle__thumb" />
+              </span>
             </button>
             <button
               type="button"
