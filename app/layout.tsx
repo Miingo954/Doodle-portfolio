@@ -21,25 +21,20 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: "/favicon.ico?v=jf5",
+        url: "/portfolio-logo-tab-v2-32.png",
         type: "image/png",
         sizes: "32x32",
       },
       {
-        url: "/jf-favicon-32.png",
-        type: "image/png",
-        sizes: "32x32",
-      },
-      {
-        url: "/jf-favicon-64.png",
+        url: "/portfolio-logo-tab-v2-64.png",
         type: "image/png",
         sizes: "64x64",
       },
     ],
-    shortcut: "/favicon.ico?v=jf5",
+    shortcut: "/portfolio-logo-tab-v2-32.png",
     apple: [
       {
-        url: "/jf-touch-icon.png",
+        url: "/portfolio-logo-touch-v2.png",
         sizes: "180x180",
         type: "image/png",
       },
