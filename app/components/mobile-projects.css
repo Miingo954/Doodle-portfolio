@@ -159,7 +159,7 @@
   height: 100%;
   margin: 0;
   display: block;
-  border: 1px solid rgb(255 255 255 / 18%);
+  border: 0;
   object-fit: cover;
   object-position: center top;
   border-radius: 0;
@@ -182,10 +182,6 @@
   border-radius: 0;
   object-fit: contain;
   object-position: center top;
-}
-
-.exclusive-phone--google .exclusive-phone-screen img {
-  border-color: rgb(25 25 24 / 16%);
 }
 
 .exclusive-phone-screen::after {
