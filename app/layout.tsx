@@ -21,13 +21,18 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: "/icon.png?v=jf3",
+        url: "/jf-favicon-32.png",
         type: "image/png",
-        sizes: "512x512",
+        sizes: "32x32",
+      },
+      {
+        url: "/jf-favicon-64.png",
+        type: "image/png",
+        sizes: "64x64",
       },
     ],
-    shortcut: "/icon.png?v=jf3",
-    apple: [{ url: "/icon.png?v=jf3", sizes: "512x512", type: "image/png" }],
+    shortcut: "/jf-favicon-32.png",
+    apple: [{ url: "/icon.png?v=jf4", sizes: "512x512", type: "image/png" }],
   },
   openGraph: {
     type: "website",
