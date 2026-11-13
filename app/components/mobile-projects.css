@@ -180,6 +180,8 @@
   height: 100%;
   margin: 0;
   border-radius: 0;
+  object-fit: contain;
+  object-position: center top;
 }
 
 .exclusive-phone--google .exclusive-phone-screen img {
