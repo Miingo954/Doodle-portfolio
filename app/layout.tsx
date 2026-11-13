@@ -19,8 +19,15 @@ export const metadata: Metadata = {
     "Full-stack software developer building thoughtful, responsive products with React, Next.js, Node.js, APIs, and modern web technologies.",
   metadataBase: new URL("https://jamalferguson.dev"),
   icons: {
-    icon: [{ url: "/favicon.ico?v=jf2", type: "image/png" }],
-    apple: "/icon.png",
+    icon: [
+      {
+        url: "/icon.png?v=jf3",
+        type: "image/png",
+        sizes: "512x512",
+      },
+    ],
+    shortcut: "/icon.png?v=jf3",
+    apple: [{ url: "/icon.png?v=jf3", sizes: "512x512", type: "image/png" }],
   },
   openGraph: {
     type: "website",
