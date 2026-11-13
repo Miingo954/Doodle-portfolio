@@ -582,11 +582,12 @@ button {
 .project-pizza-copy {
   position: absolute;
   z-index: 2;
-  top: 14%;
-  right: 6%;
-  width: 54%;
+  top: 6%;
+  right: 3%;
+  left: auto;
+  width: 48%;
   color: #fff4e3;
-  text-align: right;
+  text-align: left;
   text-shadow: 0 3px 18px #000;
 }
 
@@ -600,9 +601,13 @@ button {
 }
 
 .project-pizza-copy strong {
-  font-family: "Comic Sans MS", "Bradley Hand", cursive;
-  font-size: 2rem;
-  line-height: 1;
+  display: block;
+  font-family: var(--font-geist-sans), sans-serif;
+  font-size: clamp(1.5rem, 3vw, 3.25rem);
+  font-weight: 800;
+  line-height: 0.88;
+  letter-spacing: -0.055em;
+  text-transform: uppercase;
 }
 
 .project-screen:hover .project-image,
@@ -1585,7 +1590,7 @@ button {
   }
 
   .project-pizza-copy strong {
-    font-size: 1.5rem;
+    font-size: clamp(1rem, 5.4vw, 1.5rem);
   }
 
   .project-pizza-copy span {
@@ -1891,12 +1896,13 @@ button {
   }
 
   .project-pizza-copy {
-    top: 10%;
-    width: 56%;
+    top: 5%;
+    right: 3%;
+    width: 52%;
   }
 
   .project-pizza-copy strong {
-    font-size: 1.4rem;
+    font-size: clamp(0.82rem, 3.8vw, 1.2rem);
   }
 }
 

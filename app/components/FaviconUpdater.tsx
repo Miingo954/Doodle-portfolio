@@ -45,15 +45,12 @@ export default function FaviconUpdater() {
 
         objectUrl = URL.createObjectURL(blob);
         document
-          .querySelectorAll<HTMLLinkElement>('link[rel="icon"], link[rel="shortcut icon"]')
-          .forEach((link) => link.remove());
-
-        const icon = document.createElement("link");
-        icon.rel = "icon";
-        icon.type = "image/png";
-        icon.sizes = "64x64";
-        icon.href = objectUrl;
-        document.head.appendChild(icon);
+          .querySelectorAll<HTMLLinkElement>(
+            'link[rel="icon"], link[rel="shortcut icon"]',
+          )
+          .forEach((link) => {
+            link.href = objectUrl as string;
+          });
       }, "image/png");
     };
 

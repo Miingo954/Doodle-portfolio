@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import GitHubMark from "../../components/GitHubMark";
 import { caseStudies, getCaseStudy } from "../data";
@@ -34,7 +35,14 @@ export default async function CaseStudyPage({ params }: PageProps) {
         {/* Full document loads keep the temporary interaction runtime from duplicating global listeners. */}
         {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
         <a href="/">
-          JF <span>Jamal Ferguson</span>
+          <Image
+            className={styles.navLogo}
+            src="/doodle/assets/jf-logo.png"
+            alt=""
+            width={256}
+            height={217}
+          />
+          <span>Jamal Ferguson</span>
         </a>
         {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
         <a href="/?section=work">Back to workbench</a>

@@ -524,9 +524,13 @@ export default function Portfolio() {
                           <div className="project-pizza-copy">
                             <span>BENEVENUTI · ANTONIO&apos;S</span>
                             <strong>
-                              Pull up a chair.
+                              Turn the
                               <br />
-                              Your pie awaits.
+                              board. Find
+                              <br />
+                              your perfect
+                              <br />
+                              pizza.
                             </strong>
                           </div>
                         </div>
