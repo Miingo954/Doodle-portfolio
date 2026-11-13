@@ -143,11 +143,12 @@
 
 .exclusive-phone-screen {
   position: absolute;
-  inset: var(--phone-bezel);
+  inset: var(--phone-bezel) 1px;
   box-sizing: border-box;
   padding: 0;
   overflow: hidden;
   border: 1px solid #242426;
+  border-inline: 0;
   border-radius: clamp(23px, 2.6vw, 35px);
   background: #080808;
 }
@@ -206,6 +207,7 @@
 .exclusive-phone--pizza .exclusive-phone-screen img,
 .exclusive-phone--disney .exclusive-phone-screen img,
 .exclusive-phone--social .exclusive-phone-screen img {
+  object-fit: cover;
   object-position: 50% 0;
 }
 
@@ -219,6 +221,8 @@
 
 .exclusive-phone--ruff .exclusive-phone-screen img {
   object-position: 50% 0;
+  transform: translateX(2px) scaleX(1.025);
+  transform-origin: center;
 }
 
 .exclusive-phone--pizza .exclusive-phone-screen { background: #180b06; }
