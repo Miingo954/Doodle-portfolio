@@ -225,6 +225,15 @@
   transform-origin: center;
 }
 
+@media (min-width: 769px) {
+  .exclusive-phone--pizza .exclusive-phone-screen img,
+  .exclusive-phone--disney .exclusive-phone-screen img,
+  .exclusive-phone--social .exclusive-phone-screen img {
+    transform: scaleX(1.025);
+    transform-origin: center top;
+  }
+}
+
 .exclusive-phone--pizza .exclusive-phone-screen { background: #180b06; }
 .exclusive-phone--netflix .exclusive-phone-screen { background: #030303; }
 .exclusive-phone--disney .exclusive-phone-screen { background: #07132f; }
@@ -636,6 +645,13 @@
     align-items: start;
     gap: clamp(14px, 3vw, 24px);
   }
+  .doodle-work .project-showcase-reverse .project-visual {
+    grid-template-columns: minmax(0, 1fr) clamp(105px, 20vw, 145px);
+  }
+  .doodle-work .project-showcase-reverse .exclusive-phone {
+    grid-column: 2;
+    order: 0;
+  }
   .doodle-work .project-screen,
   .doodle-work .project-showcase-reverse .project-screen {
     grid-column: 2;
@@ -648,6 +664,9 @@
     background: transparent;
     border: 0;
     box-shadow: none;
+  }
+  .doodle-work .project-showcase-reverse .project-screen {
+    grid-column: 1;
   }
   .doodle-work .project-image {
     position: relative;
@@ -695,6 +714,9 @@
   .doodle-work .project-showcase-reverse .project-visual {
     grid-template-columns: 76px minmax(0, 1fr);
     gap: 12px;
+  }
+  .doodle-work .project-showcase-reverse .project-visual {
+    grid-template-columns: minmax(0, 1fr) 76px;
   }
   .exclusive-phone {
     --phone-bezel: 2px;

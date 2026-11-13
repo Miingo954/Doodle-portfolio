@@ -47,7 +47,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
         <strong>{study.summary}</strong>
         <div className={styles.actions}>
           <a href={study.liveUrl} target="_blank" rel="noreferrer">
-            View live project ↗
+            View live project <span className={styles.externalArrow}>↗</span>
           </a>
           <a
             className="github-link"
@@ -55,7 +55,8 @@ export default async function CaseStudyPage({ params }: PageProps) {
             target="_blank"
             rel="noreferrer"
           >
-            <GitHubMark /> View GitHub ↗
+            <GitHubMark /> View GitHub{" "}
+            <span className={styles.externalArrow}>↗</span>
           </a>
         </div>
       </header>
@@ -80,7 +81,9 @@ export default async function CaseStudyPage({ params }: PageProps) {
       </section>
       <footer className={styles.footer}>
         <p>Want to talk about the build?</p>
-        <a href="mailto:jamal.ferguson1990@gmail.com">Email Jamal ↗</a>
+        <a href="mailto:jamal.ferguson1990@gmail.com">
+          Email Jamal <span className={styles.externalArrow}>↗</span>
+        </a>
       </footer>
     </main>
   );
