@@ -32,7 +32,7 @@ function DisneyLivePreview() {
 
 export function MobileProjectPhone({ visual, src }: { visual: string; src: string }) {
   return (
-    <div className={`exclusive-phone ${visual === "google" ? "exclusive-phone--light" : ""}`} aria-hidden="true">
+    <div className={`exclusive-phone exclusive-phone--${visual} ${visual === "google" ? "exclusive-phone--light" : ""}`} aria-hidden="true">
       <div className="exclusive-phone-screen">
         <Image src={src} alt="" width={390} height={844} sizes="(max-width: 480px) 76px, (max-width: 768px) 145px, 190px" />
       </div>

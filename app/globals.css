@@ -1417,7 +1417,7 @@ button {
     right: 3%;
     width: 54px;
     height: 26px;
-    border-color: #f06f5e;
+    border-color: #f7f5ef;
   }
 }
 
@@ -1464,7 +1464,7 @@ button {
     display: block;
     width: 48px;
     height: 24px;
-    border-top-color: #f06f5e;
+    border-top-color: #f7f5ef;
     z-index: 11;
   }
 
