@@ -32,7 +32,13 @@ export const metadata: Metadata = {
       },
     ],
     shortcut: "/jf-favicon-32.png",
-    apple: [{ url: "/icon.png?v=jf4", sizes: "512x512", type: "image/png" }],
+    apple: [
+      {
+        url: "/jf-touch-icon.png",
+        sizes: "180x180",
+        type: "image/png",
+      },
+    ],
   },
   openGraph: {
     type: "website",
