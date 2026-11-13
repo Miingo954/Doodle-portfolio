@@ -608,6 +608,11 @@
 }
 
 @media (max-width: 768px) {
+  .exclusive-phone {
+    --island-top: clamp(5px, 1vw, 8px);
+    --island-height: clamp(7px, 1.25vw, 10px);
+  }
+
   .doodle-work .exclusive-phone {
     display: block;
     grid-column: 1;
@@ -683,9 +688,15 @@
     grid-template-columns: 76px minmax(0, 1fr);
     gap: 12px;
   }
-  .exclusive-phone { --phone-bezel: 3px; --speaker-top: 6px; --speaker-height: 7px; width: 76px; border-radius: 17px; }
-  .exclusive-phone::before { width: 38%; }
-  .exclusive-phone::after { top: 8px; left: 63%; width: 2px; height: 2px; }
+  .exclusive-phone {
+    --phone-bezel: 3px;
+    --island-top: 4px;
+    --island-height: 6px;
+    width: 76px;
+    border-radius: 17px;
+  }
+  .exclusive-phone::before { width: 34%; }
+  .exclusive-phone::after { left: 61.5%; width: 2px; height: 2px; }
   .exclusive-phone-screen { border-radius: 13px; }
 }
 @media (prefers-reduced-motion: reduce) {

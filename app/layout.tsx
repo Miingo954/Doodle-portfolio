@@ -21,6 +21,11 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
+        url: "/favicon.ico?v=jf5",
+        type: "image/png",
+        sizes: "32x32",
+      },
+      {
         url: "/jf-favicon-32.png",
         type: "image/png",
         sizes: "32x32",
@@ -31,7 +36,7 @@ export const metadata: Metadata = {
         sizes: "64x64",
       },
     ],
-    shortcut: "/jf-favicon-32.png",
+    shortcut: "/favicon.ico?v=jf5",
     apple: [
       {
         url: "/jf-touch-icon.png",
