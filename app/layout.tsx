@@ -19,26 +19,9 @@ export const metadata: Metadata = {
     "Full-stack software developer building thoughtful, responsive products with React, Next.js, Node.js, APIs, and modern web technologies.",
   metadataBase: new URL("https://jamalferguson.dev"),
   icons: {
-    icon: [
-      {
-        url: "/portfolio-logo-tab-v2-32.png",
-        type: "image/png",
-        sizes: "32x32",
-      },
-      {
-        url: "/portfolio-logo-tab-v2-64.png",
-        type: "image/png",
-        sizes: "64x64",
-      },
-    ],
-    shortcut: "/portfolio-logo-tab-v2-32.png",
-    apple: [
-      {
-        url: "/portfolio-logo-touch-v2.png",
-        sizes: "180x180",
-        type: "image/png",
-      },
-    ],
+    icon: [{ url: "/doodle/assets/jf-logo.png?v=portfolio-jf", type: "image/png" }],
+    shortcut: "/doodle/assets/jf-logo.png?v=portfolio-jf",
+    apple: [{ url: "/doodle/assets/jf-logo.png?v=portfolio-jf", type: "image/png" }],
   },
   openGraph: {
     type: "website",
