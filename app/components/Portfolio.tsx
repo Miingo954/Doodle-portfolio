@@ -35,7 +35,7 @@ const projects = [
     description:
       "An immersive pizza ordering experience with a visual build your own flow, dynamic pizza pages, and a persistent cart.",
     tags: ["Next.js", "TypeScript", "Dynamic routes", "Persistent cart"],
-    categories: ["React", "UI"],
+    categories: ["Apps"],
     visual: "pizza",
     preview: "",
     mobilePreview: "/doodle/assets/mobile-antonios.jpg",
@@ -52,7 +52,7 @@ const projects = [
     description:
       "A responsive streaming platform with live catalog data, trailer playback, title and episode pages, and a guest first saved list.",
     tags: ["React", "TMDB API", "Vite", "Routing"],
-    categories: ["React", "UI"],
+    categories: ["Streaming"],
     visual: "netflix",
     preview: "/doodle/assets/netflix-portfolio-final.png",
     mobilePreview: "/doodle/assets/mobile-netflix.jpg",
@@ -69,7 +69,7 @@ const projects = [
     description:
       "A media platform with branded collection hubs, dynamic title and episode pages, a persistent My List, and responsive navigation.",
     tags: ["React", "TMDB API", "Responsive UI", "Motion"],
-    categories: ["React", "UI"],
+    categories: ["Streaming"],
     visual: "disney",
     preview: "/doodle/assets/disney-portfolio-final.png",
     mobilePreview: "/doodle/assets/mobile-disney.jpg",
@@ -86,7 +86,7 @@ const projects = [
     description:
       "A guest friendly social platform with a home feed, profiles, messages, notifications, bookmarks, search, and post composition.",
     tags: ["React", "React Router", "Responsive UI", "Media"],
-    categories: ["React", "UI"],
+    categories: ["Apps"],
     visual: "social",
     preview: "/doodle/assets/social-feed-portfolio.png",
     mobilePreview: "/doodle/assets/mobile-social.jpg",
@@ -103,7 +103,7 @@ const projects = [
     description:
       "A responsive search app with shareable query routes, live results, category tabs, dark mode, and accessible loading states.",
     tags: ["React", "Public APIs", "Lazy loading", "CSS"],
-    categories: ["React", "UI"],
+    categories: ["Apps"],
     visual: "google",
     preview: "/doodle/assets/google-search-clone-portfolio.png",
     mobilePreview: "/doodle/assets/mobile-google.jpg",
@@ -131,7 +131,7 @@ const projects = [
   },
 ];
 
-const filters = ["All", "React", "UI", "Brand"];
+const filters = ["All", "Apps", "Streaming", "Brand"];
 const modalSkills = [
   { Icon: SiTypescript, name: "TypeScript", color: "#3178c6" },
   { Icon: SiJavascript, name: "JavaScript", color: "#d6b900" },
@@ -476,17 +476,33 @@ export default function Portfolio() {
               </h2>
             </div>
             <div className="flex flex-wrap gap-2" aria-label="Filter projects">
-              {filters.map((filter) => (
-                <button
-                  key={filter}
-                  type="button"
-                  aria-pressed={activeFilter === filter}
-                  onClick={() => dispatch(setActiveFilter(filter))}
-                  className={`rounded-full border px-4 py-2 text-sm transition ${activeFilter === filter ? "border-mint bg-mint text-white" : "border-line bg-panel/60 text-soft hover:border-mint hover:text-mint"}`}
-                >
-                  {filter}
-                </button>
-              ))}
+              {filters.map((filter) => {
+                const count =
+                  filter === "All"
+                    ? projects.length
+                    : projects.filter((project) =>
+                        project.categories.includes(filter),
+                      ).length;
+
+                return (
+                  <button
+                    key={filter}
+                    type="button"
+                    aria-pressed={activeFilter === filter}
+                    aria-label={`${filter}: ${count} project${count === 1 ? "" : "s"}`}
+                    onClick={() => dispatch(setActiveFilter(filter))}
+                    className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm transition ${activeFilter === filter ? "border-mint bg-mint text-white" : "border-line bg-panel/60 text-soft hover:border-mint hover:text-mint"}`}
+                  >
+                    <span>{filter}</span>
+                    <span
+                      className={`grid min-w-5 place-items-center rounded-full px-1.5 text-xs ${activeFilter === filter ? "bg-white/20 text-white" : "bg-ink/10 text-soft"}`}
+                      aria-hidden="true"
+                    >
+                      {count}
+                    </span>
+                  </button>
+                );
+              })}
             </div>
           </div>
 
