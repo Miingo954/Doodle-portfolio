@@ -154,13 +154,15 @@
 
 .exclusive-phone-screen img {
   position: relative;
+  box-sizing: border-box;
   width: 100%;
   height: 100%;
   margin: 0;
   display: block;
+  border: 1px solid rgb(255 255 255 / 18%);
   object-fit: cover;
   object-position: center top;
-  border-radius: inherit;
+  border-radius: 0;
 }
 
 /* These five captures begin at their app header instead of including an iOS
@@ -177,7 +179,11 @@
   width: 100%;
   height: 100%;
   margin: 0;
-  border-radius: clamp(10px, 1.25vw, 17px);
+  border-radius: 0;
+}
+
+.exclusive-phone--google .exclusive-phone-screen img {
+  border-color: rgb(25 25 24 / 16%);
 }
 
 .exclusive-phone-screen::after {
