@@ -357,10 +357,7 @@ button {
 .doodle-note {
   display: inline-block;
   color: #b9d8ff;
-  font:
-    22px/1.15 "Comic Sans MS",
-    "Bradley Hand",
-    cursive;
+  font: 22px/1.15 var(--font-handwritten), cursive;
   transform: rotate(-2deg);
 }
 
@@ -378,7 +375,7 @@ button {
 
 .type-line {
   min-height: 1.25em;
-  font-family: "Comic Sans MS", "Bradley Hand", cursive;
+  font-family: var(--font-handwritten), cursive;
   transform: rotate(-0.5deg);
 }
 
@@ -1507,7 +1504,7 @@ button {
   .hero-copy .type-line {
     order: 4;
     margin-top: 1rem;
-    font-family: "Comic Sans MS", "Bradley Hand", cursive;
+    font-family: var(--font-handwritten), cursive;
     font-size: 1.5rem;
     line-height: 1.4;
   }
@@ -1522,7 +1519,7 @@ button {
   .doodle-note {
     order: 6;
     margin-top: 1rem;
-    font-family: "Comic Sans MS", "Bradley Hand", cursive;
+    font-family: var(--font-handwritten), cursive;
     font-size: 22px;
   }
 
